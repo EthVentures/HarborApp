@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { WindowRef } from '../../app/WindowRef';
 import { DomSanitizer } from '@angular/platform-browser';
-//import { Connect,SimpleSigner } from 'uport-connect';
+import { Socket } from 'ng-socket-io';
 
 @Component({
   selector: 'page-home',
@@ -11,40 +11,35 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class HomePage {
 
   qr:any;
+  account:any;
   uport:any;
-  constructor(public _DomSanitizer: DomSanitizer, public navCtrl: NavController,private winRef: WindowRef) {
+  constructor(public _DomSanitizer: DomSanitizer, public navCtrl: NavController,private winRef: WindowRef,private socket: Socket) {
     this.qr = "";
-    var uportconnect = this.winRef.nativeWindow.uportconnect;
-    const Connect = uportconnect.ConnectCore;
-    const SimpleSigner = uportconnect.SimpleSigner;
-    this.uport = new Connect('SafeHarbor', {
-         clientId: '2omA1tdB5RZdBxReNmCT2NexPq4cB7GwWRh',
-         network: 'rinkeby',
-         signer: SimpleSigner('32269c5d23690b5b9f910d2c6323da63e589fc98026d8adb358bc572ca7288ec')
-    })
+    this.account = "";
   }
 
-  uportLogin(): Promise<any> {
-    var uportconnect = this.winRef.nativeWindow.uportconnect;
-    const QRUtil = uportconnect.QRUtil;
-    const uriHandler = (uri) => {
-      this.qr = QRUtil.getQRDataURI(uri)
-    }
-    return this.uport.requestCredentials({
-      requested: ['name', 'phone', 'country','email','avatar'],
-      notifications: true
-    }, uriHandler).then(credentials => {
-     const address = credentials.address;
-     const name = credentials.name;
-     console.log(name);
-     return [];
-    });
+  keyid() {
+    var key = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for (var i = 0; i < 50; i++) { key += possible.charAt(Math.floor(Math.random() * possible.length)); }
+    return key;
   }
 
-  login() {
-    this.uportLogin().then(credentials => {
-     console.log("firing");
+  uportAuth() {
+    var keyid = this.keyid();
+    console.log("Tempkey: " + keyid);
+    this.socket.fromEvent("qr_" + keyid).subscribe(data => {
+      this.qr = data['qr'];
+      this.account = "";
     });
+    this.socket.fromEvent("credentials_" + keyid).subscribe(credentials => {
+      console.log("Credentials:", credentials);
+      this.account = JSON.stringify(credentials);
+      var avatar = credentials["avatar"].uri;
+      this.qr = avatar;
+    });
+    this.socket.emit("uport_auth", { key: keyid });
+
   }
 
 }

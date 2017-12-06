@@ -9,5 +9,6 @@
 
 <ion-content padding>
 <img [src]="_DomSanitizer.bypassSecurityTrustUrl(qr)">
-<button ion-button full (click)="login()">LOGIN</button>
+<p>{{account}}</p>
+<button ion-button full (click)="uportAuth()">UPORT</button>
 </ion-content>
