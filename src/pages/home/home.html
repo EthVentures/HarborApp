@@ -1,14 +1,18 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="mainbar">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Safe Harbor</ion-title>
+    <ion-title>Project Safe Harbor</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-<img [src]="_DomSanitizer.bypassSecurityTrustUrl(qr)">
+<ion-content padding color="mainbody" style="background-color: #eee;">
+<!--<img [src]="_DomSanitizer.bypassSecurityTrustUrl(qr)">
 <p>{{account}}</p>
 <button ion-button full (click)="uportAuth()">UPORT</button>
+<button ion-button full color="light">Providers</button>-->
+
+<button ion-button full (click)="authAction()" color="light">Auth</button>
+
 </ion-content>

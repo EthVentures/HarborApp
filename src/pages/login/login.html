@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar color="mainbar">
+    <ion-title>PSH Login</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="closeModal()">
+               <ion-icon name="close"></ion-icon>
+             </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding style="background-color: #eee;">
+
+  <div *ngIf="isuport">
+    <img [src]="_DomSanitizer.bypassSecurityTrustUrl(qr)">
+    <p>{{account}}</p>
+  </div>
+
+  <div *ngIf="isprovider">
+
+    <form #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off">
+      <ion-row>
+        <ion-col>
+          <ion-list inset>
+            <ion-item>
+              <ion-input placeholder="Username" name="username" id="loginField" type="text" required [(ngModel)]="username" #email></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input placeholder="Password" name="password" id="passwordField" type="password" required [(ngModel)]="password"></ion-input>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+          <button ion-button class="submit-btn" full type="submit" [disabled]="!loginForm.form.valid">Login<ion-spinner name="bubbles" *ngIf="isSpinner"></ion-spinner>
+        </button>
+        </ion-col>
+      </ion-row>
+    </form>
+
+  </div>
+
+  <div *ngIf="unselected">
+    <button ion-button full (click)="uportAction()">UPORT</button>
+    <br>
+    <button ion-button full color="light" (click)="provider()">Providers</button>
+  </div>
+
+</ion-content>
