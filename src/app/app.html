@@ -1,27 +1,36 @@
 <ion-menu [content]="content">
   <ion-header>
     <ion-toolbar color="redside">
-      <ion-title>PSH</ion-title>
+      <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content>
-      <div *ngIf="!authServiceProvider.isLogin">
-        <ion-list>
-          <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-            <ion-icon item-left name={{p.icon}}></ion-icon> {{p.title}}
-          </button>
-        </ion-list>
-      </div>
-      <div *ngIf="authServiceProvider.isLogin">
-        <ion-list>
-        <button menuClose ion-item *ngFor="let p of authpages" (click)="openPage(p)">
-          <ion-icon item-left name={{p.icon}}></ion-icon> {{p.title}}
+    <div *ngIf="!authServiceProvider.isLogin">
+      <ion-list>
+        <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">{{p.title}}
         </button>
-        <button menuClose ion-item class="submit-btn" type="submit" color="menutheme" (click)="logoff()">
-          <ion-icon item-left name="log-out"></ion-icon>Logoff
+        <button menuClose ion-item (click)="login()">Login
         </button>
-        </ion-list>
-      </div>
+        <button menuClose ion-item (click)="register(p)">Register
+        </button>
+        <button menuClose ion-item (click)="about()">About
+        </button>
+      </ion-list>
+    </div>
+    <div *ngIf="authServiceProvider.isLogin">
+      <ion-list *ngIf="authServiceProvider.accountType == 'uport'">
+        <button menuClose ion-item *ngFor="let p of uportpages" (click)="openPage(p)">{{p.title}}
+        </button>
+        <button menuClose ion-item class="submit-btn" type="submit" color="menutheme" (click)="logoff()">Sign-off
+        </button>
+      </ion-list>
+      <ion-list *ngIf="authServiceProvider.accountType == 'provider'">
+        <button menuClose ion-item *ngFor="let p of providerpages" (click)="openPage(p)">{{p.title}}
+        </button>
+        <button menuClose ion-item class="submit-btn" type="submit" color="menutheme" (click)="logoff()">Sign-off
+        </button>
+      </ion-list>
+    </div>
   </ion-content>
 </ion-menu>
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

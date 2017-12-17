@@ -9,12 +9,12 @@
   </ion-navbar>
 </ion-header>
 
-
+<!-- style="max-width:50%;" -->
 <ion-content padding style="background-color: #eee;">
 
   <div *ngIf="isuport">
     <div style="text-align: center;">
-      <img [src]="_DomSanitizer.bypassSecurityTrustUrl(qr)" style="max-width:50%;">
+      <img [src]="_DomSanitizer.bypassSecurityTrustUrl(qr)">
       <p>{{account}}</p>
     </div>
   </div>
@@ -46,11 +46,13 @@
   </div>
 
   <div *ngIf="unselected">
-    <button ion-button full (click)="uportAction()" color="uport" style="height:40px;"><img src="assets/uport.png" style="max-width:80px;"></button>
-    <br>
-    <button ion-button full color="light" (click)="provider()">GOV Providers / Aid Services</button>
-    <br>
-    <button ion-button full color="dark" (click)="test()">Demo</button>
+    <div>
+      <button ion-button full (click)="uportAction()" color="uport" style="height:50px;"><img src="assets/uport.png" style="max-width:80px;"></button>
+      <br>
+      <button ion-button full color="redside" (click)="provider()">GOV Providers / Aid Services</button>
+      <!--<br>
+      <button ion-button full color="dark" (click)="test()">Demo</button>-->
+    </div>
   </div>
 
 </ion-content>

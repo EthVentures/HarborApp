@@ -14,6 +14,12 @@ import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { SocketProvider } from '../providers/socket/socket';
 
+import { JobsPage } from '../pages/jobs/jobs';
+import { ImmigrationPage } from '../pages/immigration/immigration';
+import { ServicesPage } from '../pages/services/services';
+import { EducationPage } from '../pages/education/education';
+import { TrainingPage } from '../pages/training/training';
+
 const config: SocketIoConfig = { url: 'http://localhost:3000/', options: {reconnect: true} };
 
 @NgModule({
@@ -21,7 +27,12 @@ const config: SocketIoConfig = { url: 'http://localhost:3000/', options: {reconn
     MyApp,
     HomePage,
     ListPage,
-    LoginPage
+    LoginPage,
+    JobsPage,
+    ImmigrationPage,
+    ServicesPage,
+    EducationPage,
+    TrainingPage
   ],
   imports: [
     BrowserModule,
@@ -34,7 +45,12 @@ const config: SocketIoConfig = { url: 'http://localhost:3000/', options: {reconn
     MyApp,
     HomePage,
     ListPage,
-    LoginPage
+    LoginPage,
+    JobsPage,
+    ImmigrationPage,
+    ServicesPage,
+    EducationPage,
+    TrainingPage
   ],
   providers: [
     StatusBar,

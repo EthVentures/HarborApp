@@ -51,16 +51,16 @@ export class LoginPage {
     });
     this.socketProvider.getEvent("credentials_" + keyid).subscribe(credentials => {
       console.log("Credentials:", credentials);
-      this.account = JSON.stringify(credentials);
-      var avatar = credentials["avatar"].uri;
-      this.qr = avatar;
+      //this.account = JSON.stringify(credentials);
+      //var avatar = credentials["avatar"].uri;
+      //this.qr = avatar;
+      this.authServiceProvider.setAuth(true,'uport');
+      this.viewController.dismiss({
+        status:true
+      });
     });
     this.socketProvider.sendData("uport_auth", { key: keyid });
 
-    /*this.authServiceProvider.setAuth(true,'uport');
-    this.viewController.dismiss({
-      status:true
-    });*/
   }
 
   provider() {
@@ -70,7 +70,7 @@ export class LoginPage {
   }
 
   test() {
-    this.authServiceProvider.setAuth(true,'uport');
+    this.authServiceProvider.setAuth(true,'provider');
     this.viewController.dismiss({
       status:true
     });
@@ -83,7 +83,7 @@ export class LoginPage {
     var self = this;
     setTimeout(function() {
       self.isSpinner = false;
-      self.authServiceProvider.setAuth(true,'provder');
+      self.authServiceProvider.setAuth(true,'provider');
       self.viewController.dismiss({
         status:true
       });
