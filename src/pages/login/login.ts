@@ -1,7 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
-import { Socket } from 'ng-socket-io';
 import { DomSanitizer } from '@angular/platform-browser';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { SocketProvider } from '../../providers/socket/socket';
 
 @IonicPage()
 @Component({
@@ -23,8 +24,7 @@ export class LoginPage {
   private password: string;
   private error: string;
 
-
-  constructor(public _DomSanitizer: DomSanitizer,private socket: Socket, public viewController:ViewController,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public socketProvider:SocketProvider,public authServiceProvider:AuthServiceProvider,public _DomSanitizer: DomSanitizer,/*private socket: Socket,*/ public viewController:ViewController,public navCtrl: NavController, public navParams: NavParams) {
     this.unselected = true;
     this.isuport = false;
     this.isprovider = false;
@@ -44,17 +44,23 @@ export class LoginPage {
     this.isuport = true;
     var keyid = this.token();
     console.log("Tempkey: " + keyid);
-    this.socket.fromEvent("qr_" + keyid).subscribe(data => {
+
+    this.socketProvider.getEvent("qr_" + keyid).subscribe(data => {
       this.qr = data['qr'];
       this.account = "";
     });
-    this.socket.fromEvent("credentials_" + keyid).subscribe(credentials => {
+    this.socketProvider.getEvent("credentials_" + keyid).subscribe(credentials => {
       console.log("Credentials:", credentials);
       this.account = JSON.stringify(credentials);
       var avatar = credentials["avatar"].uri;
       this.qr = avatar;
     });
-    this.socket.emit("uport_auth", { key: keyid });
+    this.socketProvider.sendData("uport_auth", { key: keyid });
+
+    /*this.authServiceProvider.setAuth(true,'uport');
+    this.viewController.dismiss({
+      status:true
+    });*/
   }
 
   provider() {
@@ -63,10 +69,25 @@ export class LoginPage {
     this.isprovider = true;
   }
 
+  test() {
+    this.authServiceProvider.setAuth(true,'uport');
+    this.viewController.dismiss({
+      status:true
+    });
+  }
+
   login() {
     console.log(this.username);
     console.log(this.password);
     this.isSpinner = true;
+    var self = this;
+    setTimeout(function() {
+      self.isSpinner = false;
+      self.authServiceProvider.setAuth(true,'provder');
+      self.viewController.dismiss({
+        status:true
+      });
+    },1000);
   }
 
   closeModal() {

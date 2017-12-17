@@ -40,7 +40,9 @@ $colors: (
   light:      #f4f4f4,
   dark:       #222,
   mainbar:    #00adef,
-  mainbody:   #f2f2f2
+  mainbody:   #f2f2f2,
+  redside:    #ef4200,
+  uport:      #5f32b8
 );
 
 
@@ -88,3 +90,8 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+
+
+.uportimage {
+  max-width:100px;
+}
