@@ -13,6 +13,7 @@ import { ServicesPage } from '../pages/services/services';
 import { EducationPage } from '../pages/education/education';
 import { TrainingPage } from '../pages/training/training';
 import { LoginPage } from '../pages/login/login';
+import { RegisterPage } from '../pages/register/register';
 
 @Component({
   templateUrl: 'app.html'
@@ -20,7 +21,7 @@ import { LoginPage } from '../pages/login/login';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = JobsPage;
+  rootPage: any = HomePage;
 
   pages: Array<{title: string, icon:string, component: any}>;
   uportpages: Array<{title: string, icon:string, component: any}>;
@@ -55,7 +56,13 @@ export class MyApp {
     loginModal.present();
   }
 
-  register() {}
+  register() {
+    let registerModal = this.modalCtrl.create(RegisterPage, { });
+    registerModal.onDidDismiss(obj => {
+        console.log(JSON.stringify(obj));
+    });
+    registerModal.present();
+  }
   about() {}
 
   account(item) {

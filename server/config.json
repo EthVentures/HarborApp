@@ -1,0 +1,13 @@
+{
+  "server": {
+    "hostName": "localhost",
+    "port": "3000"
+  },
+  "token": {
+    "secret": "secretapplication",
+    "expiresInSeconds": "2628000"
+  },
+  "database": {
+    "address":"mongodb://localhost:27017/harbor"
+  }
+}

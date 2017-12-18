@@ -1,0 +1,30 @@
+{
+  "name": "HarborAppServer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt-nodejs": "*",
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.17.2",
+    "compression": "^1.7.0",
+    "cookie-session": "^1.3.0",
+    "cors": "^2.8.4",
+    "express": "^4.15.4",
+    "express-socket.io": "^1.0.3",
+    "influxdb-nodejs": "^2.7.4",
+    "jsonwebtoken": "^7.4.3",
+    "mongoose": "4.12.6",
+    "shortid": "^2.2.8",
+    "socket.io": "^2.0.3",
+    "socket.io-client": "^2.0.4",
+    "uport-connect": "^0.7.0",
+    "ws": "^3.1.0"
+  }
+}

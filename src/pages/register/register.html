@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-navbar color="mainbar">
+    <ion-title>PSH Registration</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="closeModal()">
+               <ion-icon name="close"></ion-icon>
+             </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding style="background-color: #eee;">
+
+  <ion-row>
+   <ion-col>
+     <ion-list inset>
+
+       <ion-item>
+         <ion-input type="text" placeholder="First Name" name="first name" [(ngModel)]="payload.firstName" required></ion-input>
+       </ion-item>
+
+       <ion-item>
+         <ion-input type="text" placeholder="Last Name" name="last name" [(ngModel)]="payload.lastName" required></ion-input>
+       </ion-item>
+
+       <ion-item>
+         <ion-input type="text" placeholder="Username" name="username" [(ngModel)]="payload.username" required></ion-input>
+       </ion-item>
+
+       <ion-item>
+         <ion-input type="password" placeholder="Password" name="password" [(ngModel)]="payload.password" required></ion-input>
+       </ion-item>
+
+       <ion-item>
+         <ion-input type="password" placeholder="Re-enter Password" name="password" [(ngModel)]="payload.repassword" required></ion-input>
+       </ion-item>
+
+       <ion-item>
+         <ion-input type="text" placeholder="Email" name="email" [(ngModel)]="payload.email" required></ion-input>
+       </ion-item>
+
+       <ion-item>
+         <ion-input type="text" placeholder="Gov Name" name="gov" [(ngModel)]="payload.gov" required></ion-input>
+       </ion-item>
+
+       <ion-item>
+         <ion-input type="text" placeholder="Website" name="website" [(ngModel)]="payload.website" required></ion-input>
+       </ion-item>
+       
+     </ion-list>
+   </ion-col>
+ </ion-row>
+ <div style="text-align:center">
+ <span style="color:red;">{{error}}</span>
+ </div>
+<div padding>
+ <ion-row>
+   <ion-col class="signup-col">
+     <button ion-button class="submit-btn" full type="submit" color="redside"(click)="register()">Register <ion-spinner name="bubbles" *ngIf="isSpinner"></ion-spinner></button>
+   </ion-col>
+ </ion-row>
+</div>
+
+
+</ion-content>

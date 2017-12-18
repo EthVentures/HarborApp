@@ -6,6 +6,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
+import { RegisterPage } from '../pages/register/register';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -32,7 +33,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000/', options: {reconn
     ImmigrationPage,
     ServicesPage,
     EducationPage,
-    TrainingPage
+    TrainingPage,
+    RegisterPage
   ],
   imports: [
     BrowserModule,
@@ -50,7 +52,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000/', options: {reconn
     ImmigrationPage,
     ServicesPage,
     EducationPage,
-    TrainingPage
+    TrainingPage,
+    RegisterPage
   ],
   providers: [
     StatusBar,
