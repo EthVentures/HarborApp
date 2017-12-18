@@ -23,12 +23,15 @@ export class LoginPage {
   private username: string;
   private password: string;
   private error: string;
+  creds:any;
 
   constructor(public socketProvider:SocketProvider,public authServiceProvider:AuthServiceProvider,public _DomSanitizer: DomSanitizer,/*private socket: Socket,*/ public viewController:ViewController,public navCtrl: NavController, public navParams: NavParams) {
     this.unselected = true;
     this.isuport = false;
     this.isprovider = false;
     this.isSpinner = false;
+    this.creds = {password:'',username:''};
+    this.error = '';
   }
 
   token() {
@@ -56,7 +59,9 @@ export class LoginPage {
       //this.qr = avatar;
       this.authServiceProvider.setAuth(true,'uport');
       this.viewController.dismiss({
-        status:true
+        status:true,
+        type:'uport',
+        data:credentials
       });
     });
     this.socketProvider.sendData("uport_auth", { key: keyid });
@@ -77,17 +82,31 @@ export class LoginPage {
   }
 
   login() {
-    console.log(this.username);
-    console.log(this.password);
+    console.log(this.creds);
     this.isSpinner = true;
-    var self = this;
-    setTimeout(function() {
-      self.isSpinner = false;
-      self.authServiceProvider.setAuth(true,'provider');
-      self.viewController.dismiss({
-        status:true
-      });
-    },1000);
+    this.authServiceProvider.login(this.creds).subscribe(
+      data => {
+        if (data.success) {
+          console.log(data);
+          this.isSpinner = true;
+          this.viewController.dismiss({
+            status:true,
+            type:'provider',
+            data:data
+          });
+          this.authServiceProvider.setAuth(true,'provider');
+        } else {
+
+        }
+      },
+      err => {
+        console.log(JSON.stringify(err._body));
+        this.error = JSON.parse(err._body).message;
+        this.isSpinner = false;
+        this.creds['password'] = '';
+      },
+      () => console.log('Logging in....')
+    );
   }
 
   closeModal() {

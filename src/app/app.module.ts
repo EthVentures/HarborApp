@@ -21,6 +21,8 @@ import { ServicesPage } from '../pages/services/services';
 import { EducationPage } from '../pages/education/education';
 import { TrainingPage } from '../pages/training/training';
 
+import { IonicStorageModule } from '@ionic/storage';
+
 const config: SocketIoConfig = { url: 'http://localhost:3000/', options: {reconnect: true} };
 
 @NgModule({
@@ -40,7 +42,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000/', options: {reconn
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [

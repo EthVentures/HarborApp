@@ -26,11 +26,12 @@
         <ion-col>
           <ion-list inset>
             <ion-item>
-              <ion-input placeholder="Username" name="username" id="loginField" type="text" required [(ngModel)]="username" #email></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-input placeholder="Password" name="password" id="passwordField" type="password" required [(ngModel)]="password"></ion-input>
-            </ion-item>
+      <ion-input type="text" [(ngModel)]="creds.username" placeholder="Username" name="username"  required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="password" [(ngModel)]="creds.password" placeholder="Password" name="password"  required></ion-input>
+    </ion-item>
           </ion-list>
         </ion-col>
       </ion-row>

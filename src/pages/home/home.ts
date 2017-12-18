@@ -4,6 +4,7 @@ import { WindowRef } from '../../app/WindowRef';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Socket } from 'ng-socket-io';
 import { LoginPage } from '../login/login';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 @Component({
   selector: 'page-home',
@@ -14,18 +15,31 @@ export class HomePage {
   qr:any;
   account:any;
   uport:any;
-  constructor(public modalCtrl: ModalController,public _DomSanitizer: DomSanitizer, public navCtrl: NavController,private winRef: WindowRef,/*private socket: Socket*/) {
+  constructor(public authServiceProvider:AuthServiceProvider,public modalCtrl: ModalController,public _DomSanitizer: DomSanitizer, public navCtrl: NavController,private winRef: WindowRef,/*private socket: Socket*/) {
     this.qr = "";
     this.account = "";
   }
 
   authAction() {
-    console.log("Auth");
     let loginModal = this.modalCtrl.create(LoginPage, { });
     /*loginModal.onDidDismiss(obj => {
         console.log(JSON.stringify(obj));
     });*/
     loginModal.present();
+  }
+
+  authping() {
+    console.log("Auth Ping");
+    this.authServiceProvider.getToken().then((token) => {
+      this.authServiceProvider.authping(token).subscribe(
+        data => {
+          console.log(data);
+        },
+        err => {
+          console.log(err);
+        }
+      );
+    });
   }
 
   token() {

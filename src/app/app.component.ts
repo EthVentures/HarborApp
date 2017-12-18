@@ -35,10 +35,12 @@ export class MyApp {
     ];
 
     this.uportpages = [
+      { title: 'Home', icon:'home', component: HomePage },
       { title: 'Uport', icon:'desktop',component: HomePage }
     ];
 
     this.providerpages = [
+      { title: 'Home', icon:'home', component: HomePage },
       { title: 'Job Management', icon:'hammer',component: JobsPage },
       { title: 'Med Services', icon:'pulse',component: ServicesPage },
       { title: 'Immigration Apps', icon:'body',component: ImmigrationPage },
@@ -51,16 +53,14 @@ export class MyApp {
   login() {
     let loginModal = this.modalCtrl.create(LoginPage, { });
     loginModal.onDidDismiss(obj => {
-        console.log(JSON.stringify(obj));
+        this.authServiceProvider.setAccount(obj);
     });
     loginModal.present();
   }
 
   register() {
     let registerModal = this.modalCtrl.create(RegisterPage, { });
-    registerModal.onDidDismiss(obj => {
-        console.log(JSON.stringify(obj));
-    });
+    registerModal.onDidDismiss(obj => { });
     registerModal.present();
   }
   about() {}
@@ -75,6 +75,7 @@ export class MyApp {
 
   logoff() {
     this.authServiceProvider.setAuth(false,'');
+    this.authServiceProvider.logoff();
     this.nav.setRoot(HomePage);
   }
 

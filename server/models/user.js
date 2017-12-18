@@ -25,6 +25,12 @@ var schema = new Schema({
   email: {
     type: String
   },
+  gov: {
+    type: String
+  },
+  website: {
+    type: String
+  },
   password: {
     type: String,
     required: true
@@ -37,19 +43,12 @@ var schema = new Schema({
   }
 });
 
-// on every save, add the date
 schema.pre('save', function (next) {
-  // get the current date
   var currentDate = new Date();
-
-  // change the updated_at field to current date
   this.updatedAt = currentDate;
-
-  // if created_at doesn't exist, add to that field
   if (! this.createdAt) {
     this.createdAt = currentDate;
   }
-
   next();
 });
 

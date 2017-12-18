@@ -4,13 +4,17 @@ var jsonwebtoken = require('jsonwebtoken');
 var CONFIG = require('../config.json');
 var TOKEN_SECRET = CONFIG.token.secret;
 var TOKEN_EXPIRES = parseInt(CONFIG.token.expiresInSeconds, 10);
-
 var User = require('../models/user');
-
 var router = express.Router();
+var tokenMiddleware = require('../middleware/token');
+
+router.post('/authping', tokenMiddleware.verifyToken, function(req, res){
+  res.json({
+    status:true, message: "This account is auth on the Harbor network"
+  });
+});
 
 router.post('/register', function createUser(request, response) {
-  //console.log("Registing");
   User.findOne({ username: request.body.username }, function handleQuery(error, user) {
     if (error) {
       response.status(500).json({ success: false, message: 'Internal server error' });
@@ -20,13 +24,11 @@ router.post('/register', function createUser(request, response) {
       response.status(409).json({ success: false, message: 'Username \'' + request.body.username + '\' already exists.' });
       return;
     }
-    //console.log("bcrypt 1");
     bcrypt.genSalt(10, function (error, salt) {
       if (error) {
         response.status(500).json({ success: false, message: 'Internal server error' });
         throw error;
       }
-      //console.log("bcrypt 2");
       bcrypt.hash(request.body.password, salt,null, function (error, hash) {
         if (error) { response.status(500).json({ success: false, message: 'Internal server error' });
           throw error;
@@ -36,10 +38,10 @@ router.post('/register', function createUser(request, response) {
           password: hash,
           firstName: request.body.firstName,
           lastName: request.body.lastName,
-          email: request.body.email
+          email: request.body.email,
+          gov:request.body.gov,
+          website: request.body.website
         });
-        //console.log("Saving");
-        //console.log(user);
         user.save(function (error) {
           if (error) {
             response.status(500).json({ success: false, message: 'Internal server error' });

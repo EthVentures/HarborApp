@@ -6,6 +6,10 @@ var http = require("http");
 var mongoose = require('mongoose');
 var cors = require('cors')
 var CONFIG = require('./config.json');
+var TOKEN_SECRET = CONFIG.token.secret;
+var TOKEN_EXPIRES = parseInt(CONFIG.token.expiresInSeconds, 10);
+
+var jsonwebtoken = require('jsonwebtoken');
 
 const UportConnect = require('uport-connect');
 const Connect = UportConnect.ConnectCore;
@@ -49,6 +53,11 @@ io.on('connection', function (socket) {
     uport.requestCredentials({
       requested: ['name', 'phone', 'country','email','avatar']
     }, uriHandler).then((credentials) => {
+      //onsole.log(credentials['phone']);
+      var token = jsonwebtoken.sign({ username: credentials['phone'] }, TOKEN_SECRET, {
+        expiresIn: TOKEN_EXPIRES
+      });
+      credentials['token'] = token;
       socket.emit('credentials_' + tempkey, credentials);
     })
   });

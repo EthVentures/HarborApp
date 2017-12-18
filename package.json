@@ -1,62 +1,64 @@
 {
-    "name": "HarborApp",
-    "version": "0.0.1",
-    "author": "Ionic Framework",
-    "homepage": "http://ionicframework.com/",
-    "private": true,
-    "scripts": {
-        "clean": "ionic-app-scripts clean",
-        "build": "ionic-app-scripts build",
-        "lint": "ionic-app-scripts lint",
-        "ionic:build": "ionic-app-scripts build",
-        "ionic:serve": "ionic-app-scripts serve"
+  "name": "HarborApp",
+  "version": "0.0.1",
+  "author": "Ionic Framework",
+  "homepage": "http://ionicframework.com/",
+  "private": true,
+  "scripts": {
+    "clean": "ionic-app-scripts clean",
+    "build": "ionic-app-scripts build",
+    "lint": "ionic-app-scripts lint",
+    "ionic:build": "ionic-app-scripts build",
+    "ionic:serve": "ionic-app-scripts serve"
+  },
+  "dependencies": {
+    "@angular/common": "5.0.3",
+    "@angular/compiler": "5.0.3",
+    "@angular/compiler-cli": "5.0.3",
+    "@angular/core": "5.0.3",
+    "@angular/forms": "5.0.3",
+    "@angular/http": "5.0.3",
+    "@angular/platform-browser": "5.0.3",
+    "@angular/platform-browser-dynamic": "5.0.3",
+    "@ionic-native/core": "4.4.0",
+    "@ionic-native/splash-screen": "4.4.0",
+    "@ionic-native/status-bar": "4.4.0",
+    "@ionic/storage": "^2.1.3",
+    "cordova-ios": "^4.4.0",
+    "cordova-plugin-device": "^1.1.4",
+    "cordova-plugin-ionic-webview": "^1.1.16",
+    "cordova-plugin-splashscreen": "^4.0.3",
+    "cordova-plugin-whitelist": "^1.3.1",
+    "cordova-sqlite-storage": "^2.1.4",
+    "debug-promise": "^0.2.5",
+    "ionic-angular": "3.9.2",
+    "ionic-plugin-keyboard": "^2.2.1",
+    "ionicons": "3.0.0",
+    "ng-socket-io": "^0.2.0",
+    "rxjs": "5.5.2",
+    "socket.io": "^2.0.4",
+    "sw-toolbox": "3.6.0",
+    "uport-connect": "^0.7.0",
+    "web3": "^1.0.0-beta.26",
+    "zone.js": "0.8.18"
+  },
+  "devDependencies": {
+    "@ionic/app-scripts": "3.1.4",
+    "babel-preset-es2015": "^6.24.1",
+    "typescript": "2.4.2"
+  },
+  "description": "An Ionic project",
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-device": {},
+      "cordova-plugin-ionic-webview": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-whitelist": {},
+      "ionic-plugin-keyboard": {},
+      "cordova-sqlite-storage": {}
     },
-    "dependencies": {
-        "@angular/common": "5.0.3",
-        "@angular/compiler": "5.0.3",
-        "@angular/compiler-cli": "5.0.3",
-        "@angular/core": "5.0.3",
-        "@angular/forms": "5.0.3",
-        "@angular/http": "5.0.3",
-        "@angular/platform-browser": "5.0.3",
-        "@angular/platform-browser-dynamic": "5.0.3",
-        "@ionic-native/core": "4.4.0",
-        "@ionic-native/splash-screen": "4.4.0",
-        "@ionic-native/status-bar": "4.4.0",
-        "@ionic/storage": "2.1.3",
-        "cordova-ios": "^4.4.0",
-        "cordova-plugin-device": "^1.1.4",
-        "cordova-plugin-ionic-webview": "^1.1.16",
-        "cordova-plugin-splashscreen": "^4.0.3",
-        "cordova-plugin-whitelist": "^1.3.1",
-        "debug-promise": "^0.2.5",
-        "ionic-angular": "3.9.2",
-        "ionic-plugin-keyboard": "^2.2.1",
-        "ionicons": "3.0.0",
-        "ng-socket-io": "^0.2.0",
-        "rxjs": "5.5.2",
-        "socket.io": "^2.0.4",
-        "sw-toolbox": "3.6.0",
-        "uport-connect": "^0.7.0",
-        "web3": "^1.0.0-beta.26",
-        "zone.js": "0.8.18"
-    },
-    "devDependencies": {
-        "@ionic/app-scripts": "3.1.4",
-        "babel-preset-es2015": "^6.24.1",
-        "typescript": "2.4.2"
-    },
-    "description": "An Ionic project",
-    "cordova": {
-        "plugins": {
-            "cordova-plugin-device": {},
-            "cordova-plugin-ionic-webview": {},
-            "cordova-plugin-splashscreen": {},
-            "cordova-plugin-whitelist": {},
-            "ionic-plugin-keyboard": {}
-        },
-        "platforms": [
-            "ios"
-        ]
-    }
+    "platforms": [
+      "ios"
+    ]
+  }
 }

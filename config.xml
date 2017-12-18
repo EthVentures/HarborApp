@@ -84,4 +84,5 @@
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
     <allow-navigation href="http://10.39.26.179:8101" />
     <allow-navigation href="http://10.0.0.17:8100" />
+    <plugin name="cordova-sqlite-storage" spec="^2.1.4" />
 </widget>
