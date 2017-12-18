@@ -5,19 +5,24 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Socket } from 'ng-socket-io';
 import { LoginPage } from '../login/login';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
+  providers: [Camera]
 })
 export class HomePage {
 
   qr:any;
   account:any;
   uport:any;
-  constructor(public authServiceProvider:AuthServiceProvider,public modalCtrl: ModalController,public _DomSanitizer: DomSanitizer, public navCtrl: NavController,private winRef: WindowRef,/*private socket: Socket*/) {
+  baseimage:any;
+
+  constructor(private camera: Camera,public authServiceProvider:AuthServiceProvider,public modalCtrl: ModalController,public _DomSanitizer: DomSanitizer, public navCtrl: NavController,private winRef: WindowRef,/*private socket: Socket*/) {
     this.qr = "";
     this.account = "";
+    this.baseimage = "";
   }
 
   authAction() {
@@ -40,6 +45,22 @@ export class HomePage {
         }
       );
     });
+  }
+
+  cam() {
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+
+    this.camera.getPicture(options).then((imageData) => {
+      this.baseimage = 'data:image/jpeg;base64,' + imageData;
+    }, (err) => {
+
+    });
+
   }
 
   token() {

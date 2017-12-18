@@ -14,5 +14,7 @@
 <button ion-button full color="light">Providers</button>-->
 
 <button ion-button full (click)="authping()" color="light">Auth Ping</button>
+<img [src]="_DomSanitizer.bypassSecurityTrustUrl(baseimage)">
+<button ion-button full (click)="cam()" color="light">Camera</button>
 
 </ion-content>

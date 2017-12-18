@@ -14,6 +14,8 @@ import { EducationPage } from '../pages/education/education';
 import { TrainingPage } from '../pages/training/training';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
+import { AppConfig } from '../config/app.config';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -27,7 +29,7 @@ export class MyApp {
   uportpages: Array<{title: string, icon:string, component: any}>;
   providerpages: Array<{title: string, icon:string, component: any}>;
 
-  constructor(public modalCtrl: ModalController,public authServiceProvider:AuthServiceProvider,public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public appConfig:AppConfig,public modalCtrl: ModalController,public authServiceProvider:AuthServiceProvider,public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
     this.pages = [
@@ -47,6 +49,8 @@ export class MyApp {
       { title: 'Training', icon:'hand',component: TrainingPage },
       { title: 'Education', icon:'book',component: EducationPage }
     ];
+
+    //console.log(appConfig.API_URL);
 
   }
 

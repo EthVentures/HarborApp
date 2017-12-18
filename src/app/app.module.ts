@@ -23,6 +23,8 @@ import { TrainingPage } from '../pages/training/training';
 
 import { IonicStorageModule } from '@ionic/storage';
 
+import { AppConfig } from '../config/app.config';
+
 const config: SocketIoConfig = { url: 'http://localhost:3000/', options: {reconnect: true} };
 
 @NgModule({
@@ -64,7 +66,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000/', options: {reconn
     WindowRef,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthServiceProvider,
-    SocketProvider
+    SocketProvider,
+    AppConfig
   ]
 })
 export class AppModule {}
