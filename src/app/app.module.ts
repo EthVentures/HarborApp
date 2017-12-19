@@ -20,6 +20,7 @@ import { ImmigrationPage } from '../pages/immigration/immigration';
 import { ServicesPage } from '../pages/services/services';
 import { EducationPage } from '../pages/education/education';
 import { TrainingPage } from '../pages/training/training';
+import { NewRefPage } from '../pages/new-ref/new-ref';
 
 import { IonicStorageModule } from '@ionic/storage';
 
@@ -38,7 +39,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000/', options: {reconn
     ServicesPage,
     EducationPage,
     TrainingPage,
-    RegisterPage
+    RegisterPage,
+    NewRefPage
   ],
   imports: [
     BrowserModule,
@@ -58,7 +60,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000/', options: {reconn
     ServicesPage,
     EducationPage,
     TrainingPage,
-    RegisterPage
+    RegisterPage,
+    NewRefPage
   ],
   providers: [
     StatusBar,

@@ -31,6 +31,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/api/user', require('./routes/users'));
+app.use('/api/refugee', require('./routes/refugees'));
 
 var server = http.createServer(app);
 

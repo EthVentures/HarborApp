@@ -8,7 +8,7 @@ export class AppConfig {
   public NO_FAKE_SWITCH:any;
 
   constructor() {
-    this.API_URL = this._readString('API_URL', '');
+    this.API_URL = this._readString('API_URL', 'http://localhost:3000/api/');
     this.NO_FAKE_SWITCH = this._readString('NO_FAKE_SWITCH', '');
     this.NO_FAKE_SWITCH = parseInt(this.NO_FAKE_SWITCH);
     console.log(process.env);

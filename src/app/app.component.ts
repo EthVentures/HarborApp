@@ -14,8 +14,8 @@ import { EducationPage } from '../pages/education/education';
 import { TrainingPage } from '../pages/training/training';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
+import { NewRefPage } from '../pages/new-ref/new-ref';
 import { AppConfig } from '../config/app.config';
-
 
 @Component({
   templateUrl: 'app.html'
@@ -49,15 +49,26 @@ export class MyApp {
       { title: 'Training', icon:'hand',component: TrainingPage },
       { title: 'Education', icon:'book',component: EducationPage }
     ];
-
-    //console.log(appConfig.API_URL);
-
   }
 
   login() {
     let loginModal = this.modalCtrl.create(LoginPage, { });
     loginModal.onDidDismiss(obj => {
         this.authServiceProvider.setAccount(obj);
+        if (obj != null) {
+          if (obj.type == 'uport') {
+            this.authServiceProvider.refugeeCheck().subscribe(data => {
+              console.log(data);
+              if (!data.found) {
+                let nfModal = this.modalCtrl.create(NewRefPage, { });
+                nfModal.onDidDismiss(obj => {
+
+                });
+                nfModal.present();
+              }
+            });
+          }
+        }
     });
     loginModal.present();
   }

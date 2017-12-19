@@ -1,6 +1,7 @@
 import { Http, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { AppConfig } from '../../config/app.config';
 import 'rxjs/add/operator/map';
 
 @Injectable()
@@ -11,7 +12,7 @@ export class AuthServiceProvider {
   profile:any;
   token:any;
 
-  constructor(public http: Http, public storage:Storage) {
+  constructor(public http: Http, public storage:Storage, public appConfig:AppConfig) {
     this.isLogin = false;
     this.accountType = '';
     this.profile = '';
@@ -52,34 +53,52 @@ export class AuthServiceProvider {
 
   setAccount(rawd) {
     console.log(rawd);
-    var accountdata = rawd['data'];
-    if (rawd.type == 'uport') {
-      this.storage.set('token', accountdata['token']);
-      this.storage.set('profile', accountdata);
-      this.storage.set('type', 'uport');
-    } else if (rawd.type == 'provider') {
-      this.storage.set('token', accountdata['token']);
-      this.storage.set('profile', accountdata);
-      this.storage.set('type', 'provider');
+    if (rawd != null) {
+      var accountdata = rawd['data'];
+      if (rawd.type == 'uport') {
+        this.storage.set('token', accountdata['token']);
+        this.storage.set('profile', accountdata);
+        this.storage.set('type', 'uport');
+        this.token = accountdata['token'];
+        this.profile = accountdata
+      } else if (rawd.type == 'provider') {
+        this.storage.set('token', accountdata['token']);
+        this.storage.set('profile', accountdata);
+        this.storage.set('type', 'provider');
+        this.token = accountdata['token'];
+        this.profile = accountdata
+      }
     }
+  }
+
+  refugeeCheck() {
+    let body = JSON.stringify({'token':this.token, 'refugee':this.profile['publicKey']});
+    let head = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.post(this.appConfig.API_URL + "refugee/refugeeCheck", body, { headers : head }).map(res =>  res.json());
+  }
+
+  refugeeSet() {
+    let body = JSON.stringify({'token':this.token, 'refugee':this.profile});
+    let head = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.post(this.appConfig.API_URL + "refugee/refugeeSet", body, { headers : head }).map(res =>  res.json());
   }
 
   authping(token) {
     let body = JSON.stringify({'token':token});
     let head = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.post("http://localhost:3000/api/user/authping", body, { headers : head }).map(res =>  res.json());
+    return this.http.post(this.appConfig.API_URL + "user/authping", body, { headers : head }).map(res =>  res.json());
   }
 
   login(params) {
     let body = JSON.stringify(params);
     let head = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.post("http://localhost:3000/api/user/authenticate", body, { headers : head }).map(res =>  res.json());
+    return this.http.post(this.appConfig.API_URL + "user/authenticate", body, { headers : head }).map(res =>  res.json());
   }
 
   register(params) {
     let body = JSON.stringify(params);
     let head = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.post("http://localhost:3000/api/user/register", body, { headers : head }).map(res =>  res.json());
+    return this.http.post(this.appConfig.API_URL + "user/register", body, { headers : head }).map(res =>  res.json());
   }
 
 }
