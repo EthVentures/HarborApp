@@ -26,7 +26,12 @@ import { IonicStorageModule } from '@ionic/storage';
 
 import { AppConfig } from '../config/app.config';
 
-const config: SocketIoConfig = { url: 'http://localhost:3000/', options: {reconnect: true} };
+import { File } from '@ionic-native/file';
+import { Transfer } from '@ionic-native/transfer';
+import { FilePath } from '@ionic-native/file-path';
+import { Camera } from '@ionic-native/camera';
+
+const config: SocketIoConfig = { url: 'http://192.168.1.82:3000/', options: {reconnect: true} };
 
 @NgModule({
   declarations: [
@@ -70,7 +75,11 @@ const config: SocketIoConfig = { url: 'http://localhost:3000/', options: {reconn
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthServiceProvider,
     SocketProvider,
-    AppConfig
+    AppConfig,
+    File,
+    Transfer,
+    Camera,
+    FilePath,
   ]
 })
 export class AppModule {}

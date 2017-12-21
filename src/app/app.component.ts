@@ -16,6 +16,7 @@ import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { NewRefPage } from '../pages/new-ref/new-ref';
 import { AppConfig } from '../config/app.config';
+import { ImageResizer, ImageResizerOptions } from '@ionic-native/image-resizer';
 
 @Component({
   templateUrl: 'app.html'
@@ -23,7 +24,8 @@ import { AppConfig } from '../config/app.config';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  //rootPage: any = HomePage;
+  rootPage: any = JobsPage;
 
   pages: Array<{title: string, icon:string, component: any}>;
   uportpages: Array<{title: string, icon:string, component: any}>;

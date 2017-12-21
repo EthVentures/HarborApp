@@ -42,15 +42,15 @@ export class LoginPage {
   }
 
   uportAction() {
-    this.unselected = false;
-    this.isprovider = false;
-    this.isuport = true;
     var keyid = this.token();
     console.log("Tempkey: " + keyid);
 
     this.socketProvider.getEvent("qr_" + keyid).subscribe(data => {
       this.qr = data['qr'];
       this.account = "";
+      this.unselected = false;
+      this.isprovider = false;
+      this.isuport = true;
     });
     this.socketProvider.getEvent("credentials_" + keyid).subscribe(credentials => {
       console.log("Credentials:", credentials);

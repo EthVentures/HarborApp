@@ -70,6 +70,18 @@ export class AuthServiceProvider {
       }
     }
   }
+  //http://localhost:5000/api/v1.0/verification
+  faceVerification(params) {
+    let body = JSON.stringify(params);
+    let head = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.post("http://192.168.1.82:5000/api/v1.0/verification", body, { headers : head });
+  }
+
+  imageResize(params) {
+    let body = JSON.stringify(params);
+    let head = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.post("http://192.168.1.82:5000/api/v1.0/image/resize", body, { headers : head }).map(res =>  res.json());
+  }
 
   refugeeCheck() {
     let body = JSON.stringify({'token':this.token, 'refugee':this.profile['publicKey']});
