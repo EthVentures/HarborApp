@@ -19,4 +19,12 @@ export class ServicesPage {
 
   }
 
+  items = [
+    'Kitchen Staff'
+  ];
+
+  itemSelected(item: string) {
+    console.log("Selected Item", item);
+  }
+
 }

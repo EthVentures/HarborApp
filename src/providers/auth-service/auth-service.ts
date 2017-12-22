@@ -74,13 +74,31 @@ export class AuthServiceProvider {
   faceVerification(params) {
     let body = JSON.stringify(params);
     let head = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.post("http://192.168.1.82:5000/api/v1.0/verification", body, { headers : head });
+    return this.http.post("http://10.0.0.17:5000/api/v1.0/verification", body, { headers : head });
   }
 
   imageResize(params) {
     let body = JSON.stringify(params);
     let head = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.post("http://192.168.1.82:5000/api/v1.0/image/resize", body, { headers : head }).map(res =>  res.json());
+    return this.http.post("http://10.0.0.17:5000/api/v1.0/image/resize", body, { headers : head }).map(res =>  res.json());
+  }
+
+  imageAge(params) {
+    let body = JSON.stringify(params);
+    let head = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.post("http://10.0.0.17:5000/api/v1.0/estimation/age", body, { headers : head }).map(res =>  res.json());
+  }
+
+  imageBiometrics(params) {
+    let body = JSON.stringify(params);
+    let head = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.post(this.appConfig.API_URL + "image/addBiometrics", body, { headers : head }).map(res =>  res.json());
+  }
+
+  deleteBiometrics(images) {
+    let body = JSON.stringify(images);
+    let head = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.post(this.appConfig.API_URL + "image/deleteBiometrics", body, { headers : head }).map(res =>  res.json());
   }
 
   refugeeCheck() {

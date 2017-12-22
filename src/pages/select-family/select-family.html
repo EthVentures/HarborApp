@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar color="mainbar">
+    <ion-title>Add Member</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="closeModal()">
+               <ion-icon name="close"></ion-icon>
+             </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="background-color: #eee;">
+
+  <ion-item>
+    <div style="display:table-cell; vertical-align:middle; text-align:center">
+      <img [src]="famImage" style="border-radius: 25px;" height="50%">
+    </div>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>First Name</ion-label>
+    <ion-input type="text" [(ngModel)]="firstName"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Last Name</ion-label>
+    <ion-input type="text" [(ngModel)]="lastName"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Age</ion-label>
+    <ion-input type="text" [(ngModel)]="age"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Notes</ion-label>
+    <ion-input type="text" [(ngModel)]="notes"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Location</ion-label>
+    <ion-input type="text" [(ngModel)]="location"></ion-input>
+  </ion-item>
+
+  <div padding style="background-color:white;">
+    <button ion-button full color="mainbar" (click)="cam()">Camera</button>
+    <button ion-button full color="dark" (click)="add()">Link</button>
+    <button ion-button full color="mainbar" (click)="saveImageTest()">Test Save</button>
+    <button ion-button full color="mainbar" (click)="deleteImageTest()">Test Delete</button>
+
+  </div>
+</ion-content>

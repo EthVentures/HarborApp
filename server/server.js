@@ -27,11 +27,12 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({limit: '10mb'}));
+app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
 
 app.use('/api/user', require('./routes/users'));
 app.use('/api/refugee', require('./routes/refugees'));
+app.use('/api/image', require('./routes/images'));
 
 var server = http.createServer(app);
 

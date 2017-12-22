@@ -21,6 +21,7 @@ import { ServicesPage } from '../pages/services/services';
 import { EducationPage } from '../pages/education/education';
 import { TrainingPage } from '../pages/training/training';
 import { NewRefPage } from '../pages/new-ref/new-ref';
+import { SelectFamilyPage } from '../pages/select-family/select-family';
 
 import { IonicStorageModule } from '@ionic/storage';
 
@@ -31,7 +32,7 @@ import { Transfer } from '@ionic-native/transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { Camera } from '@ionic-native/camera';
 
-const config: SocketIoConfig = { url: 'http://192.168.1.82:3000/', options: {reconnect: true} };
+const config: SocketIoConfig = { url: 'http://10.0.0.17:3000/', options: {reconnect: true} };
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ const config: SocketIoConfig = { url: 'http://192.168.1.82:3000/', options: {rec
     EducationPage,
     TrainingPage,
     RegisterPage,
-    NewRefPage
+    NewRefPage,
+    SelectFamilyPage
   ],
   imports: [
     BrowserModule,
@@ -66,7 +68,8 @@ const config: SocketIoConfig = { url: 'http://192.168.1.82:3000/', options: {rec
     EducationPage,
     TrainingPage,
     RegisterPage,
-    NewRefPage
+    NewRefPage,
+    SelectFamilyPage
   ],
   providers: [
     StatusBar,

@@ -5,7 +5,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Services</ion-title>
+    <ion-title>Med Services</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="add()">
           <ion-icon name="add"></ion-icon>
@@ -16,6 +16,12 @@
 </ion-header>
 
 
-<ion-content padding style="background-color: #eee;">
+<ion-content style="background-color: #eee;">
+
+  <ion-list>
+    <button ion-item *ngFor="let item of items">
+      {{ item }}
+    </button>
+  </ion-list>
 
 </ion-content>

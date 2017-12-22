@@ -25,7 +25,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   //rootPage: any = HomePage;
-  rootPage: any = JobsPage;
+  rootPage: any = NewRefPage;
 
   pages: Array<{title: string, icon:string, component: any}>;
   uportpages: Array<{title: string, icon:string, component: any}>;
@@ -52,6 +52,7 @@ export class MyApp {
       { title: 'Education', icon:'book',component: EducationPage }
     ];
   }
+
 
   login() {
     let loginModal = this.modalCtrl.create(LoginPage, { });

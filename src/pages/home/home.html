@@ -16,11 +16,12 @@
 <button ion-button full (click)="authping()" color="light">Auth Ping</button>
 <img [src]="_DomSanitizer.bypassSecurityTrustUrl(baseimage)">
 
-<button ion-button full (click)="cam()" color="light">Camera</button>
+<button ion-button full (click)="testRotate()" color="light">Camera</button>
 
 <button ion-button full (click)="compare()" color="light">Compare</button>
 
-<!--<button ion-button full (click)="save()" color="light">Save Image</button>-->
+<button ion-button full (click)="ver()" color="light">Verification</button>
+
 <button ion-button full (click)="resize()" color="light">Resize</button>
 {{temptext}}
 </ion-content>

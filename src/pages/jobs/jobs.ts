@@ -19,4 +19,17 @@ export class JobsPage {
 
   }
 
+  items = [
+    'Kitchen Staff',
+    'Pharmacy Techician',
+    'Cashier',
+    'Businesss Systems Analyst',
+    'Pet Walker',
+    'Office Administrative Assistant'
+  ];
+
+  itemSelected(item: string) {
+    console.log("Selected Item", item);
+  }
+
 }

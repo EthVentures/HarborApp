@@ -21,6 +21,8 @@
     "influxdb-nodejs": "^2.7.4",
     "jsonwebtoken": "^7.4.3",
     "mongoose": "4.12.6",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2",
     "shortid": "^2.2.8",
     "socket.io": "^2.0.3",
     "socket.io-client": "^2.0.4",

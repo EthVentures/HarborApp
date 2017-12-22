@@ -4,8 +4,69 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding style="background-color: #eee;">
-{{data}}
-<button ion-button full color="light" (click)="test()">Save Profile</button>
+<ion-content style="background-color: #eee;">
+<!--{{data}}
+<button ion-button full color="light" (click)="test()">Save Profile</button>-->
+
+<ion-list>
+
+  <ion-item>
+    <ion-label stacked>Name</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Email (Optional)</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Age</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Country</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>City/Town/Province</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Gender</ion-label>
+    <ion-select>
+      <ion-option value="male">Male</ion-option>
+      <ion-option value="female">Female</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Do you have any children?</ion-label>
+    <ion-checkbox color="dark"></ion-checkbox>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Do you have medical conditions?</ion-label>
+    <ion-checkbox color="dark"></ion-checkbox>
+  </ion-item>
+
+  <ion-item *ngFor="let item of photos; let i = index" [attr.data-index]="i">
+    <ion-thumbnail item-start>
+      <img [src]="item.image">
+    </ion-thumbnail>
+    <h2>{{item.firstName}} {{item.lastName}}</h2>
+    <p></p>
+    <button ion-button clear item-end (click)="deleteAtIndex(i)">Delete</button>
+  </ion-item>
+
+  <div padding style="background-color:white;">
+    <button ion-button full color="mainbar" (click)="add()">Add Family Member</button>
+    <button ion-button full color="dark" (click)="test()">Link</button>
+  </div>
+
+</ion-list>
 
 </ion-content>
