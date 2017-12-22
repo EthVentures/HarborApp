@@ -28,6 +28,9 @@ var schema = new Schema({
   location: {
     type: String
   },
+  relationship: {
+    type: String
+  },
   createdAt: {
     type: Date
   },

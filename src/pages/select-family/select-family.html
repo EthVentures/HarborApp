@@ -42,11 +42,27 @@
     <ion-input type="text" [(ngModel)]="location"></ion-input>
   </ion-item>
 
+  <ion-item>
+    <ion-label>Relationship</ion-label>
+    <ion-select [(ngModel)]="relationship">
+      <ion-option value="1">Brother</ion-option>
+      <ion-option value="2">Sister</ion-option>
+      <ion-option value="3">Parent</ion-option>
+      <ion-option value="4">Grandmother</ion-option>
+      <ion-option value="5">Grandfather</ion-option>
+      <ion-option value="6">First Cousin</ion-option>
+      <ion-option value="7">Second Cousin</ion-option>
+      <ion-option value="8">Son</ion-option>
+      <ion-option value="9">Daughter</ion-option>
+      <ion-option value="10">Wife</ion-option>
+    </ion-select>
+  </ion-item>
+
   <div padding style="background-color:white;">
     <button ion-button full color="mainbar" (click)="cam()">Camera</button>
-    <button ion-button full color="dark" (click)="add()">Link</button>
-    <button ion-button full color="mainbar" (click)="saveImageTest()">Test Save</button>
-    <button ion-button full color="mainbar" (click)="deleteImageTest()">Test Delete</button>
+    <button ion-button full color="dark" (click)="add()">Add</button>
+    <!--<button ion-button full color="mainbar" (click)="saveImageTest()">Test Save</button>
+    <button ion-button full color="mainbar" (click)="deleteImageTest()">Test Delete</button>-->
 
   </div>
 </ion-content>

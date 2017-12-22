@@ -58,13 +58,13 @@
       <img [src]="item.image">
     </ion-thumbnail>
     <h2>{{item.firstName}} {{item.lastName}}</h2>
-    <p></p>
-    <button ion-button clear item-end (click)="deleteAtIndex(i)">Delete</button>
+    <p>{{relationship(item.relationship)}}</p>
+    <button ion-button clear item-end (click)="deleteAtIndex(i,item)">Delete</button>
   </ion-item>
 
   <div padding style="background-color:white;">
     <button ion-button full color="mainbar" (click)="add()">Add Family Member</button>
-    <button ion-button full color="dark" (click)="test()">Link</button>
+    <button ion-button full color="dark" (click)="link()">Link</button>
   </div>
 
 </ion-list>

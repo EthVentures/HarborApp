@@ -28,6 +28,9 @@ var schema = new Schema({
   address: {
     type: String
   },
+  bmimages: {
+    type: Array
+  },
   createdAt: {
     type: Date
   },

@@ -17,6 +17,7 @@ export class SelectFamilyPage {
   location:any;
   notes:any;
   temp:any;
+  relationship:any;
   constructor(public toastCtrl: ToastController,public authServiceProvider:AuthServiceProvider,private camera: Camera,public viewController:ViewController,public navCtrl: NavController, public navParams: NavParams) {
     this.famImage = '';
     this.firstName = '';
@@ -25,6 +26,7 @@ export class SelectFamilyPage {
     this.location = '';
     this.notes = '';
     this.temp = {};
+    this.relationship = '';
   }
 
   ionViewDidLoad() {
@@ -135,11 +137,28 @@ export class SelectFamilyPage {
   }
 
   add() {
-    this.viewController.dismiss({status:true,data:{
-      image:this.famImage,
+    console.log(this.relationship);
+    var image = this.famImage.split(',')[1];
+    var data = {
+      image:image,
+      publicKey: this.authServiceProvider.profile['publicKey'],
+      publicEncKey: this.authServiceProvider.profile['publicEncKey'],
       firstName:this.firstName,
-      lastName:this.lastName
-    }});
+      lastName:this.lastName,
+      age:this.age,
+      notes:this.notes,
+      location:this.location,
+      relationship:this.relationship,
+      user: {
+        type:'uport'
+      },
+    };
+    this.authServiceProvider.imageBiometrics(data).subscribe(response => {
+      console.log(JSON.stringify(response));
+      this.temp = response;
+      this.temp["image"] = this.famImage;
+      this.viewController.dismiss({status:true,data:this.temp});
+    });
   }
 
 }

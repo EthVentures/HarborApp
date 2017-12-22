@@ -22,6 +22,7 @@ import { EducationPage } from '../pages/education/education';
 import { TrainingPage } from '../pages/training/training';
 import { NewRefPage } from '../pages/new-ref/new-ref';
 import { SelectFamilyPage } from '../pages/select-family/select-family';
+import { TwoFactorFacePage } from '../pages/two-factor-face/two-factor-face';
 
 import { IonicStorageModule } from '@ionic/storage';
 
@@ -47,7 +48,8 @@ const config: SocketIoConfig = { url: 'http://10.0.0.17:3000/', options: {reconn
     TrainingPage,
     RegisterPage,
     NewRefPage,
-    SelectFamilyPage
+    SelectFamilyPage,
+    TwoFactorFacePage
   ],
   imports: [
     BrowserModule,
@@ -69,7 +71,8 @@ const config: SocketIoConfig = { url: 'http://10.0.0.17:3000/', options: {reconn
     TrainingPage,
     RegisterPage,
     NewRefPage,
-    SelectFamilyPage
+    SelectFamilyPage,
+    TwoFactorFacePage
   ],
   providers: [
     StatusBar,

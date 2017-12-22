@@ -14,7 +14,7 @@ router.post('/refugeeCheck', tokenMiddleware.verifyToken, function(req, res){
     if (ref == null) {
       res.json({ found:false });
     } else {
-      res.json({ found:true });
+      res.json({ found:true, ref:ref });
     }
   });
 });
@@ -28,7 +28,8 @@ router.post('/refugeeSet', tokenMiddleware.verifyToken, function(req, res){
     location:req.body['refugee'].country,
     email:req.body['refugee'].email,
     name:req.body['refugee'].name,
-    phone:req.body['refugee'].phone
+    phone:req.body['refugee'].phone,
+    bmimages:req.body.images
   });
   console.log(refugee);
   refugee.save(function (error) {

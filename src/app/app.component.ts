@@ -18,14 +18,16 @@ import { NewRefPage } from '../pages/new-ref/new-ref';
 import { AppConfig } from '../config/app.config';
 import { ImageResizer, ImageResizerOptions } from '@ionic-native/image-resizer';
 
+import { TwoFactorFacePage } from '../pages/two-factor-face/two-factor-face';
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
+  rootPage: any = TwoFactorFacePage;
   //rootPage: any = HomePage;
-  rootPage: any = NewRefPage;
 
   pages: Array<{title: string, icon:string, component: any}>;
   uportpages: Array<{title: string, icon:string, component: any}>;
@@ -61,7 +63,7 @@ export class MyApp {
         if (obj != null) {
           if (obj.type == 'uport') {
             this.authServiceProvider.refugeeCheck().subscribe(data => {
-              console.log(data);
+              console.log(JSON.stringify(data));
               if (!data.found) {
                 let nfModal = this.modalCtrl.create(NewRefPage, { });
                 nfModal.onDidDismiss(obj => {

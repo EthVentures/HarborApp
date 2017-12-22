@@ -74,7 +74,7 @@ export class AuthServiceProvider {
   faceVerification(params) {
     let body = JSON.stringify(params);
     let head = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.post("http://10.0.0.17:5000/api/v1.0/verification", body, { headers : head });
+    return this.http.post("http://10.0.0.17:5000/api/v1.0/verification", body, { headers : head }).map(res =>  res.json());
   }
 
   imageResize(params) {
@@ -107,8 +107,8 @@ export class AuthServiceProvider {
     return this.http.post(this.appConfig.API_URL + "refugee/refugeeCheck", body, { headers : head }).map(res =>  res.json());
   }
 
-  refugeeSet() {
-    let body = JSON.stringify({'token':this.token, 'refugee':this.profile});
+  refugeeSet(images) {
+    let body = JSON.stringify({'token':this.token, 'refugee':this.profile,'images':images});
     let head = new Headers({ 'Content-Type': 'application/json' });
     return this.http.post(this.appConfig.API_URL + "refugee/refugeeSet", body, { headers : head }).map(res =>  res.json());
   }
