@@ -7,28 +7,48 @@
   <ion-content>
     <div *ngIf="!authServiceProvider.isLogin">
       <ion-list>
-        <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">{{p.title}}
-        </button>
-        <button menuClose ion-item (click)="login()">Login
-        </button>
-        <button menuClose ion-item (click)="register(p)">Register
-        </button>
-        <button menuClose ion-item (click)="about()">About
-        </button>
+        <ion-item menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+          <ion-icon name="{{p.icon}}" item-start color="navbar"></ion-icon>
+          <ion-label>{{p.title}}</ion-label>
+        </ion-item>
+        <ion-item menuClose ion-item (click)="login()">
+          <ion-icon name="log-in" item-start color="navbar"></ion-icon>
+          <ion-label>Login</ion-label>
+        </ion-item>
+        <ion-item menuClose ion-item (click)="register(p)">
+          <ion-icon name="person" item-start color="navbar"></ion-icon>
+          <ion-label>Register</ion-label>
+        </ion-item>
+        <ion-item menuClose ion-item (click)="about()">
+          <ion-icon name="information-circle" item-start color="navbar"></ion-icon>
+          <ion-label>About</ion-label>
+        </ion-item>
       </ion-list>
     </div>
     <div *ngIf="authServiceProvider.isLogin">
+
       <ion-list *ngIf="authServiceProvider.accountType == 'uport'">
-        <button menuClose ion-item *ngFor="let p of uportpages" (click)="openPage(p)">{{p.title}}
-        </button>
-        <button menuClose ion-item class="submit-btn" type="submit" color="menutheme" (click)="logoff()">Exit
-        </button>
+        <ion-item menuClose ion-item *ngFor="let p of uportpages" (click)="openPage(p)">
+          <ion-icon name="{{p.icon}}" item-start color="navbar"></ion-icon>
+          <ion-label>{{p.title}}</ion-label>
+        </ion-item>
+
+        <ion-item menuClose ion-item class="submit-btn" type="submit" color="menutheme" (click)="logoff()">
+          <ion-icon name="log-out" item-start color="navbar"></ion-icon>
+          <ion-label>Exit</ion-label>
+        </ion-item>
       </ion-list>
+
       <ion-list *ngIf="authServiceProvider.accountType == 'provider'">
-        <button menuClose ion-item *ngFor="let p of providerpages" (click)="openPage(p)">{{p.title}}
-        </button>
-        <button menuClose ion-item class="submit-btn" type="submit" color="menutheme" (click)="logoff()">Exit
-        </button>
+        <ion-item menuClose ion-item *ngFor="let p of providerpages" (click)="openPage(p)">
+          <ion-icon name="{{p.icon}}" item-start color="navbar"></ion-icon>
+          <ion-label>{{p.title}}</ion-label>
+        </ion-item>
+
+        <ion-item menuClose ion-item class="submit-btn" type="submit" color="menutheme" (click)="logoff()">
+          <ion-icon name="log-out" item-start color="navbar"></ion-icon>
+          <ion-label>Exit</ion-label>
+        </ion-item>
       </ion-list>
     </div>
   </ion-content>

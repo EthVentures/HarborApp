@@ -24,7 +24,7 @@
     <form #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off">
       <ion-row>
         <ion-col>
-          <ion-list inset>
+          <ion-list inset style="margin: 0px;">
             <ion-item>
       <ion-input type="text" [(ngModel)]="creds.username" placeholder="Username" name="username"  required></ion-input>
     </ion-item>
@@ -38,6 +38,7 @@
       <ion-row>
         <ion-col>
           <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+          <br>
           <button ion-button class="submit-btn" full type="submit" [disabled]="!loginForm.form.valid" color="redside">Login<ion-spinner name="bubbles" *ngIf="isSpinner"></ion-spinner>
         </button>
         </ion-col>

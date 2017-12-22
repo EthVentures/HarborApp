@@ -25,7 +25,7 @@ import { SelectFamilyPage } from '../pages/select-family/select-family';
 import { TwoFactorFacePage } from '../pages/two-factor-face/two-factor-face';
 import { AboutPage } from '../pages/about/about';
 import { IonicStorageModule } from '@ionic/storage';
-
+import { MyResourcesPage } from '../pages/my-resources/my-resources';
 import { AppConfig } from '../config/app.config';
 
 import { File } from '@ionic-native/file';
@@ -51,7 +51,8 @@ const config: SocketIoConfig = { url: 'http://10.0.0.17:3000/', options: {reconn
     SelectFamilyPage,
     TwoFactorFacePage,
     AboutPage,
-    FindFamilyPage
+    FindFamilyPage,
+    MyResourcesPage
   ],
   imports: [
     BrowserModule,
@@ -76,7 +77,8 @@ const config: SocketIoConfig = { url: 'http://10.0.0.17:3000/', options: {reconn
     SelectFamilyPage,
     TwoFactorFacePage,
     AboutPage,
-    FindFamilyPage
+    FindFamilyPage,
+    MyResourcesPage
   ],
   providers: [
     StatusBar,

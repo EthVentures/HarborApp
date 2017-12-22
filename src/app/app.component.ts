@@ -18,9 +18,8 @@ import { NewRefPage } from '../pages/new-ref/new-ref';
 import { AppConfig } from '../config/app.config';
 import { AboutPage } from '../pages/about/about';
 import { FindFamilyPage } from '../pages/find-family/find-family';
-
+import { MyResourcesPage } from '../pages/my-resources/my-resources';
 import { ImageResizer, ImageResizerOptions } from '@ionic-native/image-resizer';
-
 import { TwoFactorFacePage } from '../pages/two-factor-face/two-factor-face';
 
 @Component({
@@ -29,8 +28,9 @@ import { TwoFactorFacePage } from '../pages/two-factor-face/two-factor-face';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = FindFamilyPage;
-  //rootPage: any = HomePage;
+  //rootPage: any = FindFamilyPage;
+  rootPage: any = HomePage;
+  //rootPage: any = LoginPage;
 
   pages: Array<{title: string, icon:string, component: any}>;
   uportpages: Array<{title: string, icon:string, component: any}>;
@@ -45,8 +45,9 @@ export class MyApp {
 
     this.uportpages = [
       { title: 'Home', icon:'home', component: HomePage },
-      { title: 'Find Family', icon:'home', component: FindFamilyPage },
-      { title: 'Status', icon:'desktop',component: HomePage }
+      { title: 'Find Family', icon:'contacts', component: FindFamilyPage },
+      { title: 'Resources', icon:'hammer', component: MyResourcesPage },
+      { title: 'Status', icon:'stats',component: HomePage }
     ];
 
     this.providerpages = [
