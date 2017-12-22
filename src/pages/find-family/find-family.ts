@@ -1,24 +1,21 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
-import { Camera, CameraOptions } from '@ionic-native/camera';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
-import { DomSanitizer } from '@angular/platform-browser';
-import { ToastController } from 'ionic-angular';
-import { AppConfig } from '../../config/app.config';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 @Component({
-  selector: 'page-two-factor-face',
-  templateUrl: 'two-factor-face.html',
+  selector: 'page-find-family',
+  templateUrl: 'find-family.html',
 })
-export class TwoFactorFacePage {
-
+export class FindFamilyPage {
   tempimage:any;
-  constructor(public viewController:ViewController,public appConfig:AppConfig,public toastController:ToastController,public _DomSanitizer:DomSanitizer,public authServiceProvider:AuthServiceProvider,private camera: Camera,public navCtrl: NavController, public navParams: NavParams) {
+  predictions:any;
+  constructor(public camera:Camera,public navCtrl: NavController, public navParams: NavParams,public authServiceProvider:AuthServiceProvider) {
     this.tempimage = '';
+    this.predictions = [];
   }
-
 
   ionViewDidLoad() {
 
@@ -88,39 +85,8 @@ export class TwoFactorFacePage {
     };
   }
 
-  cancel() {
-    this.viewController.dismiss({
-      status:false
-    });
-  }
-
-  processResult(results) {
-    var score = results.response[0].score;
-    console.log("TFA Score: ", score);
-    if (score > this.appConfig.FACEVERIFICTIONLIMIT) {
-      let toast = this.toastController.create({
-        message: 'Two-Face Authentication Successfull!',
-        duration: 2000,
-        position:'middle'
-      });
-      toast.present();
-      this.viewController.dismiss({
-        status:true
-      });
-    } else {
-      let toast = this.toastController.create({
-        message: 'Two-Face Authentication Failed!',
-        duration: 2000,
-        position:'middle'
-      });
-      toast.present();
-    }
-  }
-
-  scan() {
-
-    console.log("Scanning...");
-
+  findcamera() {
+    console.log("Find Family using Camera");
     const options: CameraOptions = {
       quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL,
@@ -129,11 +95,6 @@ export class TwoFactorFacePage {
     }
 
     this.camera.getPicture(options).then((imageData) => {
-      let toast = this.toastController.create({
-        message: 'Please wait, processing picture for biometrics...',
-        position:'middle'
-      });
-      toast.present();
       console.log("Got picture!");
       var data = { 'image': imageData, 'format': 'jpeg' }
 
@@ -148,27 +109,15 @@ export class TwoFactorFacePage {
         this.rotateBase64Image(this.tempimage,90,function(rotate_data) {
 
           current_scope.tempimage = rotate_data;
-          var account = current_scope.authServiceProvider.profile;
-          var url = account['avatar'].uri;
-          console.log("Getting uPort image");
-          console.log(account['avatar'].uri);
 
-          current_scope.getBase64ImageFromURL(url).subscribe(url_data => {
+          var payload = { 'query': rotate_data.split(',')[1] };
 
-            console.log("Got uPort image");
-            var rotate_without_tags = current_scope.tempimage.split(",")[1];
-            var payload = { 'query': rotate_without_tags, 'target': url_data };
-            console.log("Comparing");
-
-            current_scope.authServiceProvider.faceVerification(payload).subscribe(results => {
-              toast.dismiss();
-              current_scope.processResult(results);
-            }, error => {
-              console.log("error");
-              console.log(JSON.stringify(error));
-            });
-
-
+          current_scope.authServiceProvider.imageIdentification(payload).subscribe(results => {
+            console.log(JSON.stringify(results));
+            current_scope.predictions = results.response[0].scores;
+          }, error => {
+            console.log("error");
+            console.log(JSON.stringify(error));
           });
 
         })
@@ -176,6 +125,27 @@ export class TwoFactorFacePage {
       });
     }, (err) => {
 
+    });
+  }
+
+  finduport() {
+    console.log("Find Family using uPort");
+    var account = this.authServiceProvider.profile;
+    var url = account['avatar'].uri;
+    console.log(account['avatar'].uri);
+
+    this.getBase64ImageFromURL(url).subscribe(data => {
+      var payload = { 'query': data };
+
+      console.log("Find Family");
+      //console.log(JSON.stringify(payload));
+      this.authServiceProvider.imageIdentification(payload).subscribe(results => {
+        console.log(JSON.stringify(results));
+        this.predictions = results.response[0].scores;
+      }, error => {
+        console.log("error");
+        console.log(JSON.stringify(error));
+      });
     });
   }
 

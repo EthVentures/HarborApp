@@ -21,13 +21,13 @@
       <ion-list *ngIf="authServiceProvider.accountType == 'uport'">
         <button menuClose ion-item *ngFor="let p of uportpages" (click)="openPage(p)">{{p.title}}
         </button>
-        <button menuClose ion-item class="submit-btn" type="submit" color="menutheme" (click)="logoff()">Sign-off
+        <button menuClose ion-item class="submit-btn" type="submit" color="menutheme" (click)="logoff()">Exit
         </button>
       </ion-list>
       <ion-list *ngIf="authServiceProvider.accountType == 'provider'">
         <button menuClose ion-item *ngFor="let p of providerpages" (click)="openPage(p)">{{p.title}}
         </button>
-        <button menuClose ion-item class="submit-btn" type="submit" color="menutheme" (click)="logoff()">Sign-off
+        <button menuClose ion-item class="submit-btn" type="submit" color="menutheme" (click)="logoff()">Exit
         </button>
       </ion-list>
     </div>

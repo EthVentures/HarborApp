@@ -16,6 +16,9 @@ import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { NewRefPage } from '../pages/new-ref/new-ref';
 import { AppConfig } from '../config/app.config';
+import { AboutPage } from '../pages/about/about';
+import { FindFamilyPage } from '../pages/find-family/find-family';
+
 import { ImageResizer, ImageResizerOptions } from '@ionic-native/image-resizer';
 
 import { TwoFactorFacePage } from '../pages/two-factor-face/two-factor-face';
@@ -26,7 +29,7 @@ import { TwoFactorFacePage } from '../pages/two-factor-face/two-factor-face';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = TwoFactorFacePage;
+  rootPage: any = FindFamilyPage;
   //rootPage: any = HomePage;
 
   pages: Array<{title: string, icon:string, component: any}>;
@@ -42,7 +45,8 @@ export class MyApp {
 
     this.uportpages = [
       { title: 'Home', icon:'home', component: HomePage },
-      { title: 'Uport', icon:'desktop',component: HomePage }
+      { title: 'Find Family', icon:'home', component: FindFamilyPage },
+      { title: 'Status', icon:'desktop',component: HomePage }
     ];
 
     this.providerpages = [
@@ -70,6 +74,15 @@ export class MyApp {
 
                 });
                 nfModal.present();
+              } else {
+                let tfaModal = this.modalCtrl.create(TwoFactorFacePage, { });
+                tfaModal.onDidDismiss(obj => {
+                  if (!obj.status) {
+                    this.authServiceProvider.setAuth(false,'');
+                    this.authServiceProvider.logoff();
+                  }
+                });
+                tfaModal.present();
               }
             });
           }
@@ -83,7 +96,9 @@ export class MyApp {
     registerModal.onDidDismiss(obj => { });
     registerModal.present();
   }
-  about() {}
+  about() {
+    this.nav.setRoot(AboutPage);
+  }
 
   account(item) {
     if (this.authServiceProvider.accountType == item) {

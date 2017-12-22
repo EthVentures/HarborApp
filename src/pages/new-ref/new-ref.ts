@@ -14,10 +14,10 @@ export class NewRefPage {
 
   data:any;
   photos:any;
-
   constructor(public modalCtrl:ModalController,public viewController:ViewController,public authServiceProvider:AuthServiceProvider,public navCtrl: NavController, public navParams: NavParams) {
     this.data = JSON.stringify(this.authServiceProvider.profile);
     this.photos = [];
+    //console.log(this.data);
   }
 
   ionViewDidLoad() {
@@ -47,6 +47,7 @@ export class NewRefPage {
     if (i == 8) { return 'Son'; }
     if (i == 9) { return 'Daughter'; }
     if (i == 10) { return 'Wife'; }
+    if (i == 11) { return 'Husband'; }
     return 'Other';
   }
 
@@ -58,6 +59,7 @@ export class NewRefPage {
   }
 
   add() {
+
     let select = this.modalCtrl.create(SelectFamilyPage, { });
     select.onDidDismiss(obj => {
       if (obj.status) {
@@ -66,6 +68,7 @@ export class NewRefPage {
       }
     });
     select.present();
+    //console.log(JSON.stringify(this.authServiceProvider.profile));
   }
 
   link() {

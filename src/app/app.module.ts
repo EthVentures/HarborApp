@@ -14,7 +14,7 @@ import { WindowRef } from './WindowRef';
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { SocketProvider } from '../providers/socket/socket';
-
+import { FindFamilyPage } from '../pages/find-family/find-family';
 import { JobsPage } from '../pages/jobs/jobs';
 import { ImmigrationPage } from '../pages/immigration/immigration';
 import { ServicesPage } from '../pages/services/services';
@@ -23,7 +23,7 @@ import { TrainingPage } from '../pages/training/training';
 import { NewRefPage } from '../pages/new-ref/new-ref';
 import { SelectFamilyPage } from '../pages/select-family/select-family';
 import { TwoFactorFacePage } from '../pages/two-factor-face/two-factor-face';
-
+import { AboutPage } from '../pages/about/about';
 import { IonicStorageModule } from '@ionic/storage';
 
 import { AppConfig } from '../config/app.config';
@@ -49,7 +49,9 @@ const config: SocketIoConfig = { url: 'http://10.0.0.17:3000/', options: {reconn
     RegisterPage,
     NewRefPage,
     SelectFamilyPage,
-    TwoFactorFacePage
+    TwoFactorFacePage,
+    AboutPage,
+    FindFamilyPage
   ],
   imports: [
     BrowserModule,
@@ -72,7 +74,9 @@ const config: SocketIoConfig = { url: 'http://10.0.0.17:3000/', options: {reconn
     RegisterPage,
     NewRefPage,
     SelectFamilyPage,
-    TwoFactorFacePage
+    TwoFactorFacePage,
+    AboutPage,
+    FindFamilyPage
   ],
   providers: [
     StatusBar,

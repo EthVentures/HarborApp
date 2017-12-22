@@ -12,7 +12,7 @@
 
   <ion-item>
     <ion-label stacked>Name</ion-label>
-    <ion-input type="text"></ion-input>
+    <ion-input type="text" [(ngModel)]="authServiceProvider.profile.name"></ion-input>
   </ion-item>
 
   <ion-item>
@@ -21,22 +21,22 @@
   </ion-item>
 
   <ion-item>
-    <ion-label stacked>Age</ion-label>
+    <ion-label stacked>Age (Optional)</ion-label>
     <ion-input type="text"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label stacked>Country</ion-label>
+    <ion-label stacked>Country (Optional)</ion-label>
     <ion-input type="text"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label stacked>City/Town/Province</ion-label>
+    <ion-label stacked>City/Town/Province (Optional)</ion-label>
     <ion-input type="text"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label>Gender</ion-label>
+    <ion-label><small>Gender</small></ion-label>
     <ion-select>
       <ion-option value="male">Male</ion-option>
       <ion-option value="female">Female</ion-option>
@@ -44,13 +44,14 @@
   </ion-item>
 
   <ion-item>
-    <ion-label>Do you have any children?</ion-label>
+    <ion-label><small>Do you have any children?</small></ion-label>
     <ion-checkbox color="dark"></ion-checkbox>
   </ion-item>
 
   <ion-item>
-    <ion-label>Do you have medical conditions?</ion-label>
+    <ion-label><small>Do you have medical conditions?</small></ion-label>
     <ion-checkbox color="dark"></ion-checkbox>
+    <br>
   </ion-item>
 
   <ion-item *ngFor="let item of photos; let i = index" [attr.data-index]="i">
@@ -63,8 +64,9 @@
   </ion-item>
 
   <div padding style="background-color:white;">
+    <br>
     <button ion-button full color="mainbar" (click)="add()">Add Family Member</button>
-    <button ion-button full color="dark" (click)="link()">Link</button>
+    <button ion-button full color="dark" (click)="link()">Connect</button>
   </div>
 
 </ion-list>
