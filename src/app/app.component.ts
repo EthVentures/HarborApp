@@ -21,6 +21,7 @@ import { FindFamilyPage } from '../pages/find-family/find-family';
 import { MyResourcesPage } from '../pages/my-resources/my-resources';
 import { ImageResizer, ImageResizerOptions } from '@ionic-native/image-resizer';
 import { TwoFactorFacePage } from '../pages/two-factor-face/two-factor-face';
+import { AnonymousSearchPage } from '../pages/anonymous-search/anonymous-search';
 
 @Component({
   templateUrl: 'app.html'
@@ -29,8 +30,8 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   //rootPage: any = FindFamilyPage;
-  rootPage: any = HomePage;
-  //rootPage: any = FindFamilyPage;
+  //rootPage: any = HomePage;
+  rootPage: any = AnonymousSearchPage;
 
   pages: Array<{title: string, icon:string, component: any}>;
   uportpages: Array<{title: string, icon:string, component: any}>;
@@ -41,7 +42,7 @@ export class MyApp {
 
     this.pages = [
       { title: 'Home', icon:'home', component: HomePage },
-      { title: 'Anonymous Search', icon:'finger-print', component: HomePage }
+      { title: 'Anonymous Search', icon:'finger-print', component: AnonymousSearchPage }
     ];//finger-print
 
     this.uportpages = [

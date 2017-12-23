@@ -26,6 +26,8 @@ import { TwoFactorFacePage } from '../pages/two-factor-face/two-factor-face';
 import { AboutPage } from '../pages/about/about';
 import { IonicStorageModule } from '@ionic/storage';
 import { MyResourcesPage } from '../pages/my-resources/my-resources';
+import { AnonymousSearchPage } from '../pages/anonymous-search/anonymous-search';
+
 import { AppConfig } from '../config/app.config';
 
 import { File } from '@ionic-native/file';
@@ -33,7 +35,7 @@ import { Transfer } from '@ionic-native/transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { Camera } from '@ionic-native/camera';
 
-const config: SocketIoConfig = { url: 'http://10.0.0.17:3000/', options: {reconnect: true} };
+const config: SocketIoConfig = { url: 'http://192.168.1.82:3000/', options: {reconnect: true} };
 
 @NgModule({
   declarations: [
@@ -52,7 +54,8 @@ const config: SocketIoConfig = { url: 'http://10.0.0.17:3000/', options: {reconn
     TwoFactorFacePage,
     AboutPage,
     FindFamilyPage,
-    MyResourcesPage
+    MyResourcesPage,
+    AnonymousSearchPage
   ],
   imports: [
     BrowserModule,
@@ -78,7 +81,8 @@ const config: SocketIoConfig = { url: 'http://10.0.0.17:3000/', options: {reconn
     TwoFactorFacePage,
     AboutPage,
     FindFamilyPage,
-    MyResourcesPage
+    MyResourcesPage,
+    AnonymousSearchPage
   ],
   providers: [
     StatusBar,

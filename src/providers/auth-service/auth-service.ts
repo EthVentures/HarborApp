@@ -75,31 +75,31 @@ export class AuthServiceProvider {
   faceVerification(params) {
     let body = JSON.stringify(params);
     let head = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.post("http://10.0.0.17:5000/api/v1.0/verification", body, { headers : head }).map(res =>  res.json());
+    return this.http.post(this.appConfig.BM_API_URL + "api/v1.0/verification", body, { headers : head }).map(res =>  res.json());
   }
 
   imageResize(params) {
     let body = JSON.stringify(params);
     let head = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.post("http://10.0.0.17:5000/api/v1.0/image/resize", body, { headers : head }).map(res =>  res.json());
+    return this.http.post(this.appConfig.BM_API_URL + "api/v1.0/image/resize", body, { headers : head }).map(res =>  res.json());
   }
 
   imageAge(params) {
     let body = JSON.stringify(params);
     let head = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.post("http://10.0.0.17:5000/api/v1.0/estimation/age", body, { headers : head }).map(res =>  res.json());
+    return this.http.post(this.appConfig.BM_API_URL + "api/v1.0/estimation/age", body, { headers : head }).map(res =>  res.json());
   }
 
   imageIdentification(params) {
     let body = JSON.stringify(params);
     let head = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.post("http://10.0.0.17:5000/api/v1.0/identification", body, { headers : head }).map(res =>  res.json());
+    return this.http.post(this.appConfig.BM_API_URL + "api/v1.0/identification", body, { headers : head }).map(res =>  res.json());
   }
 
   imageGet(params) {
     let body = JSON.stringify(params);
     let head = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.post("http://10.0.0.17:5000/api/v1.0/image/get", body, { headers : head }).map(res =>  res.json());
+    return this.http.post(this.appConfig.BM_API_URL + "api/v1.0/image/get", body, { headers : head }).map(res =>  res.json());
   }
 
   imageBiometrics(params) {

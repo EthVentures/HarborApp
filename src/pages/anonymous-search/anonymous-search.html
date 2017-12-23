@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar color="mainbar">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Anonymous Search</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+          <ion-icon name="information-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="background-color: #eee;">
+
+  <ion-list>
+    <ion-list-header>
+      Search
+    </ion-list-header>
+    <ion-card>
+      <p padding>
+        <b>Anonymous Face</b> search uses your face captured on this device along with additional infomation to find possible family members. Project Safe Harbor uses advanced biometric technology and machine learning to bring families back to together. Anonymous search <b>removes/deletes</b> all infomation related to search afterward. If you would like to located family member and begin transfer application please sign in using your uPort account.
+      </p>
+      <ion-item>
+        <ion-label stacked>Family member's name? (Optional)</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>What country are they orginally from? (Optional)</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>City/Town/Province? (Optional)</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+      <!--<img [src]="tempimage">-->
+      <div padding style="background-color:white;">
+        <button ion-button full color="mainbar" (click)="anonymouscamera()">Take A Picture</button>
+        <br>
+        <button ion-button full color="dark" (click)="find()">Search</button>
+      </div>
+
+    </ion-card>
+
+  </ion-list>
+
+</ion-content>
