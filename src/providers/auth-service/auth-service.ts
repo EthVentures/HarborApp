@@ -96,6 +96,12 @@ export class AuthServiceProvider {
     return this.http.post("http://10.0.0.17:5000/api/v1.0/identification", body, { headers : head }).map(res =>  res.json());
   }
 
+  imageGet(params) {
+    let body = JSON.stringify(params);
+    let head = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.post("http://10.0.0.17:5000/api/v1.0/image/get", body, { headers : head }).map(res =>  res.json());
+  }
+
   imageBiometrics(params) {
     let body = JSON.stringify(params);
     let head = new Headers({ 'Content-Type': 'application/json' });

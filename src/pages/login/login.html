@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar color="mainbar">
-    <ion-title>Login Portal</ion-title>
+    <ion-title>{{title}}</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="closeModal()">
                <ion-icon name="close"></ion-icon>
@@ -52,6 +52,8 @@
       <button ion-button full (click)="uportAction()" color="uport" style="height:50px;"><img src="assets/uport.png" style="max-width:80px;"></button>
       <br>
       <button ion-button full color="redside" (click)="provider()">GOV Providers / Aid Services</button>
+      <br>
+      <button ion-button full color="dark" (click)="test()">Lost Phone? Face Authentication</button>
       <!--<br>
       <button ion-button full color="dark" (click)="test()">Demo</button>-->
     </div>

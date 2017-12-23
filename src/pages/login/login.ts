@@ -18,6 +18,7 @@ export class LoginPage {
   account:any;
   uport:any;
   isSpinner:boolean;
+  title:any;
 
   @ViewChild('email') email: any;
   private username: string;
@@ -32,6 +33,7 @@ export class LoginPage {
     this.isSpinner = false;
     this.creds = {password:'',username:''};
     this.error = '';
+    this.title = 'Login Portal';
   }
 
   token() {
@@ -44,7 +46,7 @@ export class LoginPage {
   uportAction() {
     var keyid = this.token();
     console.log("Tempkey: " + keyid);
-
+    this.title = 'uPort Portal';
     this.socketProvider.getEvent("qr_" + keyid).subscribe(data => {
       this.qr = data['qr'];
       this.account = "";
@@ -72,6 +74,7 @@ export class LoginPage {
     this.unselected = false;
     this.isuport = false;
     this.isprovider = true;
+    this.title = 'Authentication Portal';
   }
 
   test() {

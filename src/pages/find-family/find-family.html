@@ -7,11 +7,15 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding style="background-color: #eee;">
-  <button ion-button full color="dark" (click)="finduport()">Find uPort</button>
-  <button ion-button full color="dark" (click)="findcamera()">Find Camera</button>
-
+<ion-content style="background-color: #eee;">
+  <div padding style="background-color: white;">
+    <button ion-button full color="dark" (click)="finduport()">Find uPort</button>
+    <button ion-button full color="dark" (click)="findcamera()">Find Camera</button>
+  </div>
   <ion-item *ngFor="let item of predictions; let i = index" [attr.data-index]="i">
+    <ion-thumbnail item-start>
+      <img [src]="item.image">
+    </ion-thumbnail>
     <h2>{{item.result}}</h2>
     <p>{{item.filename}}</p>
   </ion-item>

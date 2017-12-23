@@ -51,6 +51,15 @@ export class FindFamilyPage {
     });
   }
 
+  getImage(index,item) {
+    //console.log("index: ",index);
+    //console.log("item: ",JSON.stringify(item));
+    this.authServiceProvider.imageGet(item).subscribe(img_get => {
+      var img = img_get.response[0].image;
+      this.predictions[index]['image'] = 'data:image/jpeg;base64,' + img;
+    });
+  }
+
   rotateBase64Image(base64data, givenDegrees, callback) {
     console.log("Rotating");
     const degrees = givenDegrees % 360;
@@ -93,35 +102,28 @@ export class FindFamilyPage {
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
     }
-
     this.camera.getPicture(options).then((imageData) => {
-      console.log("Got picture!");
       var data = { 'image': imageData, 'format': 'jpeg' }
-
       this.authServiceProvider.imageResize(data).subscribe(res_resize => {
-
         console.log("Image resized/rotating...");
-
         var reimg = res_resize.response[0].image;
         this.tempimage = 'data:image/jpeg;base64,' + reimg;
         var current_scope = this;
-
         this.rotateBase64Image(this.tempimage,90,function(rotate_data) {
-
           current_scope.tempimage = rotate_data;
-
           var payload = { 'query': rotate_data.split(',')[1] };
           console.log("Finding Family");
           current_scope.authServiceProvider.imageIdentification(payload).subscribe(results => {
             console.log(JSON.stringify(results));
             current_scope.predictions = results.response[0].scores;
+            for (var i = 0; i < current_scope.predictions.length; i++) {
+              current_scope.getImage(i,current_scope.predictions[i]);
+            }
           }, error => {
             console.log("error");
             console.log(JSON.stringify(error));
           });
-
         })
-
       });
     }, (err) => {
 
@@ -133,15 +135,15 @@ export class FindFamilyPage {
     var account = this.authServiceProvider.profile;
     var url = account['avatar'].uri;
     console.log(account['avatar'].uri);
-
     this.getBase64ImageFromURL(url).subscribe(data => {
       var payload = { 'query': data };
-
       console.log("Finding Family");
-      //console.log(JSON.stringify(payload));
       this.authServiceProvider.imageIdentification(payload).subscribe(results => {
         console.log(JSON.stringify(results));
         this.predictions = results.response[0].scores;
+        for (var i = 0; i < this.predictions.length; i++) {
+          this.getImage(i,this.predictions[i]);
+        }
       }, error => {
         console.log("error");
         console.log(JSON.stringify(error));

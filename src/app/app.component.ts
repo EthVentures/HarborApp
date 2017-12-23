@@ -30,7 +30,7 @@ export class MyApp {
 
   //rootPage: any = FindFamilyPage;
   rootPage: any = HomePage;
-  //rootPage: any = LoginPage;
+  //rootPage: any = FindFamilyPage;
 
   pages: Array<{title: string, icon:string, component: any}>;
   uportpages: Array<{title: string, icon:string, component: any}>;
@@ -40,8 +40,9 @@ export class MyApp {
     this.initializeApp();
 
     this.pages = [
-      { title: 'Home', icon:'home', component: HomePage }
-    ];
+      { title: 'Home', icon:'home', component: HomePage },
+      { title: 'Anonymous Search', icon:'finger-print', component: HomePage }
+    ];//finger-print
 
     this.uportpages = [
       { title: 'Home', icon:'home', component: HomePage },
