@@ -21,7 +21,14 @@ import { FindFamilyPage } from '../pages/find-family/find-family';
 import { MyResourcesPage } from '../pages/my-resources/my-resources';
 import { ImageResizer, ImageResizerOptions } from '@ionic-native/image-resizer';
 import { TwoFactorFacePage } from '../pages/two-factor-face/two-factor-face';
+
 import { AnonymousSearchPage } from '../pages/anonymous-search/anonymous-search';
+
+import { AddJobPage } from '../pages/add-job/add-job';
+import { AddMedPage } from '../pages/add-med/add-med';
+import { AddTrainingPage } from '../pages/add-training/add-training';
+import { AddEdPage } from '../pages/add-ed/add-ed';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -29,9 +36,7 @@ import { AnonymousSearchPage } from '../pages/anonymous-search/anonymous-search'
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  //rootPage: any = FindFamilyPage;
-  //rootPage: any = HomePage;
-  rootPage: any = AnonymousSearchPage;
+  rootPage: any = HomePage;
 
   pages: Array<{title: string, icon:string, component: any}>;
   uportpages: Array<{title: string, icon:string, component: any}>;
@@ -42,7 +47,7 @@ export class MyApp {
 
     this.pages = [
       { title: 'Home', icon:'home', component: HomePage },
-      { title: 'Anonymous Search', icon:'finger-print', component: AnonymousSearchPage }
+      { title: 'Anonymous Services', icon:'finger-print', component: AnonymousSearchPage }
     ];//finger-print
 
     this.uportpages = [

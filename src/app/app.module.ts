@@ -27,6 +27,10 @@ import { AboutPage } from '../pages/about/about';
 import { IonicStorageModule } from '@ionic/storage';
 import { MyResourcesPage } from '../pages/my-resources/my-resources';
 import { AnonymousSearchPage } from '../pages/anonymous-search/anonymous-search';
+import { AddJobPage } from '../pages/add-job/add-job';
+import { AddMedPage } from '../pages/add-med/add-med';
+import { AddTrainingPage } from '../pages/add-training/add-training';
+import { AddEdPage } from '../pages/add-ed/add-ed';
 
 import { AppConfig } from '../config/app.config';
 
@@ -36,6 +40,7 @@ import { FilePath } from '@ionic-native/file-path';
 import { Camera } from '@ionic-native/camera';
 
 const config: SocketIoConfig = { url: 'http://192.168.1.82:3000/', options: {reconnect: true} };
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -55,14 +60,22 @@ const config: SocketIoConfig = { url: 'http://192.168.1.82:3000/', options: {rec
     AboutPage,
     FindFamilyPage,
     MyResourcesPage,
-    AnonymousSearchPage
+    AnonymousSearchPage,
+    AddJobPage,
+    AddMedPage,
+    AddTrainingPage,
+    AddEdPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
     SocketIoModule.forRoot(config),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCKMrOSfV-68R4r8IrQQ_o-NzXnDOg9zyo',
+      libraries: ['places']
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -82,7 +95,11 @@ const config: SocketIoConfig = { url: 'http://192.168.1.82:3000/', options: {rec
     AboutPage,
     FindFamilyPage,
     MyResourcesPage,
-    AnonymousSearchPage
+    AnonymousSearchPage,
+    AddJobPage,
+    AddMedPage,
+    AddTrainingPage,
+    AddEdPage
   ],
   providers: [
     StatusBar,

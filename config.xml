@@ -96,4 +96,7 @@
     <allow-navigation href="http://192.168.1.82:8100" />
     <allow-navigation href="http://10.0.0.17:8100" />
     <allow-navigation href="http://169.254.141.120:8100" />
+    <plugin name="cordova-plugin-geolocation" spec="^3.0.0">
+        <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
+    </plugin>
 </widget>

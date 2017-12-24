@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Anonymous Search</ion-title>
+    <ion-title>Anonymous Services</ion-title>
     <ion-buttons end>
       <button ion-button icon-only>
           <ion-icon name="information-circle"></ion-icon>
@@ -13,10 +13,9 @@
 </ion-header>
 
 <ion-content style="background-color: #eee;">
-
   <ion-list>
     <ion-list-header>
-      Search
+      FIND FAMILY
     </ion-list-header>
     <ion-card>
       <p padding>
@@ -26,22 +25,42 @@
         <ion-label stacked>Family member's name? (Optional)</ion-label>
         <ion-input type="text"></ion-input>
       </ion-item>
-
       <ion-item>
         <ion-label stacked>What country are they orginally from? (Optional)</ion-label>
         <ion-input type="text"></ion-input>
       </ion-item>
-
       <ion-item>
         <ion-label stacked>City/Town/Province? (Optional)</ion-label>
         <ion-input type="text"></ion-input>
       </ion-item>
-      <!--<img [src]="tempimage">-->
       <div padding style="background-color:white;">
         <button ion-button full color="mainbar" (click)="anonymouscamera()">Take A Picture</button>
         <br>
         <button ion-button full color="dark" (click)="find()">Search</button>
       </div>
+    </ion-card>
+    <ion-list-header>
+      SERVICES
+    </ion-list-header>
+    <ion-card>
+      <ion-list>
+        <button ion-item>
+          <ion-icon name="pulse" item-start color="navbar"></ion-icon>
+          <ion-label>Medical Services</ion-label>
+        </button>
+        <button ion-item>
+          <ion-icon name="hand" item-start color="navbar"></ion-icon>
+          <ion-label>Training Services</ion-label>
+        </button>
+        <button ion-item>
+          <ion-icon name="book" item-start color="navbar"></ion-icon>
+          <ion-label>Educational Opportunity</ion-label>
+        </button>
+        <button ion-item>
+          <ion-icon name="hammer" item-start color="navbar"></ion-icon>
+          <ion-label>View Job Openings</ion-label>
+        </button>
+      </ion-list>
 
     </ion-card>
 

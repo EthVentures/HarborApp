@@ -16,6 +16,13 @@
 </ion-header>
 
 
-<ion-content padding style="background-color: #eee;">
+<ion-content style="background-color: #eee;">
+
+  <ion-item *ngFor="let item of items; let i = index" [attr.data-index]="i">
+    <h2>{{item}}</h2>
+    <p>{{item}}</p>
+    <button ion-button clear item-end>View</button>
+    <button ion-button clear item-end>Edit</button>
+  </ion-item>
 
 </ion-content>

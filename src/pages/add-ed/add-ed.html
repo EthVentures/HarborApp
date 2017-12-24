@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-navbar color="mainbar">
+    <ion-title>New Class</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+          <ion-icon name="information-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content style="background-color: #eee;">
+
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+  </agm-map>
+
+  <ion-list>
+    <ion-list-header>
+      DETAILS
+    </ion-list-header>
+    <ion-card>
+      <p padding>
+        Please provide the following basic infomation on the class.
+      </p>
+      <ion-item>
+        <ion-label stacked>Class Title</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Location</ion-label>
+        <ion-input type="text" [(ngModel)]="form.location"></ion-input>
+      </ion-item>
+      <ion-item>
+        <button ion-button full color="redside" (click)="location()">Use Current Location</button>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Where & When</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Description</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Target Audience</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+
+    </ion-card>
+
+    <ion-list-header>
+      CONTACT INFO
+    </ion-list-header>
+    <ion-card>
+      <p padding>
+        Please provide the following basic infomation on the contact to allow students to follow up with questions and concerns on the class.
+      </p>
+      <ion-item>
+        <ion-label stacked>Name</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Position</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Phone</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Fax</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Email</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+
+      <div padding style="background-color:white;">
+        <button ion-button full color="mainbar" (click)="create()">Post Job</button>
+      </div>
+
+    </ion-card>
+
+  </ion-list>
+
+</ion-content>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AddMedPage } from '../add-med/add-med';
 
 @IonicPage()
 @Component({
@@ -12,15 +13,20 @@ export class ServicesPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ServicesPage');
+
   }
 
   add() {
-
+    this.navCtrl.push(AddMedPage);
   }
 
   items = [
-    'Kitchen Staff'
+    'Kitchen Staff',
+    'Pharmacy Techician',
+    'Cashier',
+    'Businesss Systems Analyst',
+    'Pet Walker',
+    'Office Administrative Assistant'
   ];
 
   itemSelected(item: string) {

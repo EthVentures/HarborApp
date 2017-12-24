@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AddJobPage } from '../add-job/add-job';
 
 @IonicPage()
 @Component({
@@ -12,11 +13,11 @@ export class JobsPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad JobsPage');
+
   }
 
   add() {
-
+    this.navCtrl.push(AddJobPage);
   }
 
   items = [

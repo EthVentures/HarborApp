@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AddTrainingPage } from '../add-training/add-training';
 
 @IonicPage()
 @Component({
@@ -12,11 +13,21 @@ export class TrainingPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TrainingPage');
+
   }
 
   add() {
-
+    this.navCtrl.push(AddTrainingPage);
   }
+
+  items = [
+    'Kitchen Staff',
+    'Pharmacy Techician',
+    'Cashier',
+    'Businesss Systems Analyst',
+    'Pet Walker',
+    'Office Administrative Assistant'
+  ];
+
 
 }
