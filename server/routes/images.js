@@ -8,6 +8,7 @@ var Image = require('../models/image');
 var router = express.Router();
 var tokenMiddleware = require('../middleware/token');
 var rp = require('request-promise');
+var mongoose = require('mongoose');
 
 router.post('/addBiometrics', function(req, res){
   console.log("Add Payload Image");
@@ -67,5 +68,46 @@ router.post('/deleteBiometrics', function(req, res){
   });
 
 });
+
+router.post('/findFamily', function(req, res){
+  console.log("Find Family Images");
+
+  var options = {
+    method: 'POST',
+    uri: 'http://localhost:5000/api/v1.0/identification',
+    body: req.body, json: true
+  };
+
+  rp(options).then(function (resp) {
+      var predictions = resp.response[0].scores;
+      var ids = [];
+      var temp = {};
+      for (var i = 0; i < predictions.length; i++) {
+        var id = predictions[i].filename.split('.')[0];
+        if (mongoose.Types.ObjectId.isValid(id)) {
+          ids.push(id);
+          temp[id] = predictions[i];
+        }
+      }
+      Image.find({ '_id': { $in: ids } }, function(err, images){
+        console.log(JSON.stringify(images));
+        console.log(JSON.stringify(temp));
+        console.log(ids);
+        var results = [];
+        for (var i = 0; i < images.length; i++) {
+          var nobj = JSON.parse(JSON.stringify(images[i]));
+          nobj['details'] = temp[nobj['_id']];
+          nobj['hasImg'] = false;
+          results.push(nobj);
+        }
+        res.json(results);
+      });
+  }).catch(function (err) {
+      console.log(err);
+  });
+
+});
+
+
 
 module.exports = router;

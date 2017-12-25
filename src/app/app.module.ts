@@ -39,7 +39,7 @@ import { Transfer } from '@ionic-native/transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { Camera } from '@ionic-native/camera';
 
-const config: SocketIoConfig = { url: 'http://192.168.1.82:3000/', options: {reconnect: true} };
+const config: SocketIoConfig = { url: 'http://10.0.0.17:3000/', options: {reconnect: true} };
 import { AgmCoreModule } from '@agm/core';
 
 @NgModule({

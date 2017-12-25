@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar color="mainbar">
-    <ion-title>Post Job</ion-title>
+    <ion-title>{{title}}</ion-title>
     <ion-buttons end>
       <button ion-button icon-only>
           <ion-icon name="information-circle"></ion-icon>
@@ -26,7 +26,7 @@
       </p>
       <ion-item>
         <ion-label stacked>Job Title</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" [(ngModel)]="form.title"></ion-input>
       </ion-item>
 
       <ion-item>
@@ -39,17 +39,17 @@
 
       <ion-item>
         <ion-label stacked>Hourly Rate</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" [(ngModel)]="form.hourly"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label stacked>Description</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" [(ngModel)]="form.description"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label stacked>Job Requirements</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" [(ngModel)]="form.jobr"></ion-input>
       </ion-item>
 
     </ion-card>
@@ -63,31 +63,32 @@
       </p>
       <ion-item>
         <ion-label stacked>Name</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" [(ngModel)]="form.name"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label stacked>Position</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" [(ngModel)]="form.position"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label stacked>Phone</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" [(ngModel)]="form.phone"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label stacked>Fax</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" [(ngModel)]="form.fax"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label stacked>Email</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" [(ngModel)]="form.email"></ion-input>
       </ion-item>
 
       <div padding style="background-color:white;">
-        <button ion-button full color="mainbar" (click)="create()">Post Job</button>
+        <button ion-button full color="mainbar" (click)="create()">{{submitTitle}}</button>
+        <button *ngIf="updating" ion-button full color="redside" (click)="delete()">Delete</button>
       </div>
 
     </ion-card>

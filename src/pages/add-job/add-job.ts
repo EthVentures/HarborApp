@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 declare var google: any;
 
@@ -15,13 +16,46 @@ export class AddJobPage {
   lat: number = 40.749421;
   lng: number = -73.967499;
   zoom: number = 12;
-  constructor(public geolocation:Geolocation,public navCtrl: NavController, public navParams: NavParams) {
-    this.form = {location:''};
+  submitTitle = "";
+  title = "";
+  updating = false;
+
+  constructor(public geolocation:Geolocation,
+              public navCtrl: NavController,
+              public navParams: NavParams,
+              public authServiceProvider:AuthServiceProvider) {
+
+    this.form = {
+      title:'',
+      location:'',
+      hourly:'',
+      description:'',
+      jobr:'',
+      name:'',
+      position:'',
+      phone:'',
+      fax:'',
+      email:''
+    };
+    var state = this.navParams.get('state');
+    if (state == 'create') {
+      this.submitTitle = "Post Job";
+      this.title = "Post Job";
+      this.updating = false;
+    }
+    if (state == 'update') {
+      this.updating = true;
+      this.title = "Update Job";
+      this.submitTitle = "Update Job";
+      this.form = this.navParams.get("item");
+    }
+
   }
 
   ionViewDidLoad() {
 
   }
+
   location() {
     console.log("Getting Location...");
     var options = {
@@ -50,6 +84,24 @@ export class AddJobPage {
     }).catch((error) => {
       console.log('Error getting location', error);
     });
+  }
+
+  delete() {
+    this.authServiceProvider.jobDelete(this.form['_id']).subscribe(data => {
+      this.navCtrl.pop();
+    });
+  }
+
+  create() {
+    if (this.updating) {
+      this.authServiceProvider.jobUpdate(this.form).subscribe(data => {
+        this.navCtrl.pop();
+      });
+    } else {
+      this.authServiceProvider.jobCreate(this.form).subscribe(data => {
+        this.navCtrl.pop();
+      });
+    }
   }
 
 }

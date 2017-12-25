@@ -10,8 +10,8 @@ export class AppConfig {
   public FACEVERIFICTIONLIMIT:any;
 
   constructor() {
-    this.API_URL = this._readString('API_URL', 'http://192.168.1.82:3000/api/');
-    this.BM_API_URL = this._readString('BM_API_URL', 'http://192.168.1.82:5000/');
+    this.API_URL = this._readString('API_URL', 'http://10.0.0.17:3000/api/');
+    this.BM_API_URL = this._readString('BM_API_URL', 'http://10.0.0.17:5000/');
     this.NO_FAKE_SWITCH = this._readString('NO_FAKE_SWITCH', '');
     this.NO_FAKE_SWITCH = parseInt(this.NO_FAKE_SWITCH);
     this.FACEVERIFICTIONLIMIT = 0.9;

@@ -70,8 +70,33 @@ export class AuthServiceProvider {
       }
     }
   }
+
   //http://localhost:5000/api/v1.0/verification
   //http://localhost:5000/api/v1.0/identification
+
+  jobCreate(params) {
+    let body = JSON.stringify(params);
+    let head = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.post(this.appConfig.API_URL + "resources/job", body, { headers : head }).map(res =>  res.json());
+  }
+
+  jobGet(params) {
+    let body = JSON.stringify(params);
+    let head = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.get(this.appConfig.API_URL + "resources/job", { headers : head }).map(res =>  res.json());
+  }
+
+  jobUpdate(params) {
+    let body = JSON.stringify(params);
+    let head = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.put(this.appConfig.API_URL + "resources/job", body, { headers : head }).map(res =>  res.json());
+  }
+
+  jobDelete(id) {
+    let head = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.delete(this.appConfig.API_URL + "resources/job/" + id, { headers : head }).map(res =>  res.json());
+  }
+
   faceVerification(params) {
     let body = JSON.stringify(params);
     let head = new Headers({ 'Content-Type': 'application/json' });
@@ -93,7 +118,7 @@ export class AuthServiceProvider {
   imageIdentification(params) {
     let body = JSON.stringify(params);
     let head = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.post(this.appConfig.BM_API_URL + "api/v1.0/identification", body, { headers : head }).map(res =>  res.json());
+    return this.http.post(this.appConfig.API_URL + "image/findFamily", body, { headers : head }).map(res =>  res.json());
   }
 
   imageGet(params) {

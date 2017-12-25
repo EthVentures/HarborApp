@@ -23,6 +23,7 @@ var signingkey = "0x048e41da6ef02c0ab8647e6cd96d0a4cd91cd9bb07acc2577a4f439cbe05
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods","GET,POST,PUT,DELETE,OPTIONS");
   res.header("Access-Control-Allow-Headers", "Authorization,Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
@@ -33,6 +34,7 @@ app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
 app.use('/api/user', require('./routes/users'));
 app.use('/api/refugee', require('./routes/refugees'));
 app.use('/api/image', require('./routes/images'));
+app.use('/api/resources', require('./routes/resources'));
 
 var server = http.createServer(app);
 

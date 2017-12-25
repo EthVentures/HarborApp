@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AddJobPage } from '../add-job/add-job';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 @IonicPage()
 @Component({
@@ -9,28 +10,24 @@ import { AddJobPage } from '../add-job/add-job';
 })
 export class JobsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  items:any = []
+  constructor(public authServiceProvider:AuthServiceProvider,public navCtrl: NavController, public navParams: NavParams) {
+
   }
 
-  ionViewDidLoad() {
-
+  ionViewWillEnter() {
+    this.authServiceProvider.jobGet("").subscribe(data => {
+      console.log(JSON.stringify(data));
+      this.items = data.jobs;
+    });
   }
 
   add() {
-    this.navCtrl.push(AddJobPage);
+    this.navCtrl.push(AddJobPage, { state:'create' });
   }
 
-  items = [
-    'Kitchen Staff',
-    'Pharmacy Techician',
-    'Cashier',
-    'Businesss Systems Analyst',
-    'Pet Walker',
-    'Office Administrative Assistant'
-  ];
-
-  itemSelected(item: string) {
-    console.log("Selected Item", item);
+  update(obj) {
+    this.navCtrl.push(AddJobPage, { state:'update', item:obj });
   }
-
+  
 }

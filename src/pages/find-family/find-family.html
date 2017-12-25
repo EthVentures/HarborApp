@@ -13,10 +13,10 @@
     <button ion-button full color="dark" (click)="findcamera()">Find Camera</button>
   </div>
   <ion-item *ngFor="let item of predictions; let i = index" [attr.data-index]="i">
-    <ion-thumbnail item-start>
-      <img [src]="item.image">
+    <ion-thumbnail *ngIf="item.hasImg" item-start>
+      <img *ngIf="item.hasImg" [src]="item.image">
     </ion-thumbnail>
-    <h2>{{item.result}}</h2>
-    <p>{{item.filename}}</p>
+    <h2>{{item.firstName}} {{item.lastName}}</h2>
+    <p>Age: {{item.age}} City/Town/Province: {{item.location}}</p>
   </ion-item>
 </ion-content>

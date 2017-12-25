@@ -52,11 +52,12 @@ export class FindFamilyPage {
   }
 
   getImage(index,item) {
-    //console.log("index: ",index);
-    //console.log("item: ",JSON.stringify(item));
-    this.authServiceProvider.imageGet(item).subscribe(img_get => {
+    console.log("index: ",index);
+    console.log("item: ",JSON.stringify(item));
+    this.authServiceProvider.imageGet(item.details).subscribe(img_get => {
       var img = img_get.response[0].image;
       this.predictions[index]['image'] = 'data:image/jpeg;base64,' + img;
+      this.predictions[index]['hasImg'] = true;
     });
   }
 
@@ -140,7 +141,7 @@ export class FindFamilyPage {
       console.log("Finding Family");
       this.authServiceProvider.imageIdentification(payload).subscribe(results => {
         console.log(JSON.stringify(results));
-        this.predictions = results.response[0].scores;
+        this.predictions = results;
         for (var i = 0; i < this.predictions.length; i++) {
           this.getImage(i,this.predictions[i]);
         }
