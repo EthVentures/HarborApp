@@ -4,19 +4,73 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Find Family</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="rightAction()">
+          <ion-icon name="{{rightItemIcon}}"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content style="background-color: #eee;">
-  <div padding style="background-color: white;">
-    <button ion-button full color="dark" (click)="finduport()">Find uPort</button>
-    <button ion-button full color="dark" (click)="findcamera()">Find Camera</button>
-  </div>
-  <ion-item *ngFor="let item of predictions; let i = index" [attr.data-index]="i">
-    <ion-thumbnail *ngIf="item.hasImg" item-start>
-      <img *ngIf="item.hasImg" [src]="item.image">
-    </ion-thumbnail>
-    <h2>{{item.firstName}} {{item.lastName}}</h2>
-    <p>Age: {{item.age}} City/Town/Province: {{item.location}}</p>
-  </ion-item>
+
+  <ion-list>
+    <ion-list-header>
+      {{cardTitle}}
+    </ion-list-header>
+    <ion-card *ngIf="!hasSearch">
+      <div>
+        <p padding>
+          <b> Face</b> search uses your face captured on this device along with additional infomation to find possible family members. Project Safe Harbor uses advanced biometric technology and machine learning to bring families back to together.
+        </p>
+        <ion-item>
+          <ion-label stacked>Family member's name? (Optional)</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked>What country are they orginally from? (Optional)</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked>City/Town/Province? (Optional)</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+        <div style="background-color:white;">
+          <p padding>
+            Please select one of the following: we can get your face from your uPort profile picture or you can take a new photo now.
+          </p>
+          <ion-grid>
+            <ion-row *ngIf="!haveImg">
+              <ion-col>
+                <button ion-button full color="redside" (click)="finduport()">Use Profile</button>
+              </ion-col>
+              <ion-col>
+                <button ion-button full color="redside" (click)="findcamera()">Take Photo</button>
+              </ion-col>
+            </ion-row>
+            <ion-row *ngIf="haveImg">
+              <ion-col>
+                <button ion-button full color="redside" (click)="retake()">Remove Photo</button>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <button ion-button full color="mainbar" (click)="search()"><b>Search</b></button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </div>
+    </ion-card>
+    <ion-card *ngIf="hasSearch">
+      <ion-item *ngFor="let item of predictions; let i = index" [attr.data-index]="i">
+        <ion-thumbnail *ngIf="item.hasImg" item-start>
+          <img *ngIf="item.hasImg" [src]="item.image">
+        </ion-thumbnail>
+        <h2>{{item.firstName}} {{item.lastName}}</h2>
+        <p>Age: {{item.age}} City/Town/Province: {{item.location}}</p>
+      </ion-item>
+    </ion-card>
+
+  </ion-list>
 </ion-content>

@@ -10,8 +10,14 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
   templateUrl: 'find-family.html',
 })
 export class FindFamilyPage {
+
   tempimage:any;
   predictions:any;
+  haveImg = false;
+  hasSearch = false;
+  rightItemIcon = 'information-circle';
+  cardTitle = 'FIND FAMILY';
+
   constructor(public camera:Camera,public navCtrl: NavController, public navParams: NavParams,public authServiceProvider:AuthServiceProvider) {
     this.tempimage = '';
     this.predictions = [];
@@ -95,8 +101,15 @@ export class FindFamilyPage {
     };
   }
 
+  searchreset() {
+    this.haveImg = false;
+    this.hasSearch = false;
+    this.tempimage = '';
+    this.predictions = [];
+  }
+
   findcamera() {
-    console.log("Find Family using Camera");
+    console.log("Using Camera");
     const options: CameraOptions = {
       quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL,
@@ -111,19 +124,8 @@ export class FindFamilyPage {
         this.tempimage = 'data:image/jpeg;base64,' + reimg;
         var current_scope = this;
         this.rotateBase64Image(this.tempimage,90,function(rotate_data) {
-          current_scope.tempimage = rotate_data;
-          var payload = { 'query': rotate_data.split(',')[1] };
-          console.log("Finding Family");
-          current_scope.authServiceProvider.imageIdentification(payload).subscribe(results => {
-            console.log(JSON.stringify(results));
-            current_scope.predictions = results.response[0].scores;
-            for (var i = 0; i < current_scope.predictions.length; i++) {
-              current_scope.getImage(i,current_scope.predictions[i]);
-            }
-          }, error => {
-            console.log("error");
-            console.log(JSON.stringify(error));
-          });
+          current_scope.tempimage = rotate_data.split(',')[1];
+          current_scope.haveImg = true;
         })
       });
     }, (err) => {
@@ -131,17 +133,29 @@ export class FindFamilyPage {
     });
   }
 
-  finduport() {
-    console.log("Find Family using uPort");
-    var account = this.authServiceProvider.profile;
-    var url = account['avatar'].uri;
-    console.log(account['avatar'].uri);
-    this.getBase64ImageFromURL(url).subscribe(data => {
-      var payload = { 'query': data };
+  rightAction() {
+    if (this.hasSearch) {
+      this.haveImg = false;
+      this.hasSearch = false;
+      this.tempimage = '';
+      this.predictions = [];
+      this.rightItemIcon = 'information-circle';
+      this.cardTitle = 'FIND FAMILY';
+    } else {
+      // Get Info
+    }
+  }
+
+  search() {
+    if (this.haveImg) {
       console.log("Finding Family");
+      var payload = { 'query': this.tempimage };
       this.authServiceProvider.imageIdentification(payload).subscribe(results => {
         console.log(JSON.stringify(results));
         this.predictions = results;
+        this.hasSearch = true;
+        this.rightItemIcon = 'refresh-circle';
+        this.cardTitle = 'RESULTS';
         for (var i = 0; i < this.predictions.length; i++) {
           this.getImage(i,this.predictions[i]);
         }
@@ -149,6 +163,23 @@ export class FindFamilyPage {
         console.log("error");
         console.log(JSON.stringify(error));
       });
+    }
+
+  }
+
+  retake() {
+    this.haveImg = false;
+    this.tempimage = '';
+  }
+
+  finduport() {
+    console.log("Using uPort");
+    var account = this.authServiceProvider.profile;
+    var url = account['avatar'].uri;
+    console.log(account['avatar'].uri);
+    this.getBase64ImageFromURL(url).subscribe(data => {
+      this.tempimage = data;
+      this.haveImg = true;
     });
   }
 

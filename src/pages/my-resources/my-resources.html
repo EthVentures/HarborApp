@@ -4,15 +4,50 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Resources</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+          <ion-icon name="information-circle"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding style="background-color: #eee;">
+<ion-content style="background-color: #eee;">
+  <ion-list>
+    <ion-list-header>
+      SERVICES
+    </ion-list-header>
+    <ion-card>
+      <ion-list>
+        <button ion-item>
+        <ion-icon name="pulse" item-start color="navbar"></ion-icon>
+        <ion-label>Medical Services</ion-label>
+      </button>
+        <button ion-item>
+        <ion-icon name="hand" item-start color="navbar"></ion-icon>
+        <ion-label>Training Services</ion-label>
+      </button>
+        <button ion-item>
+        <ion-icon name="book" item-start color="navbar"></ion-icon>
+        <ion-label>Educational Opportunity</ion-label>
+      </button>
+        <button ion-item>
+        <ion-icon name="hammer" item-start color="navbar"></ion-icon>
+        <ion-label>Find Job</ion-label>
+      </button>
+      </ion-list>
+    </ion-card>
+    <ion-list-header>
+      UPCOMING EVENTS - {{datetime}}
+    </ion-list-header>
+    <ion-card>
+      <ion-item *ngFor="let item of events; let i = index" [attr.data-index]="i">
+        <ion-icon name="{{item.icon}}" item-start color="navbar"></ion-icon>
 
-  <button ion-button full color="redside">Training</button>
-  <br>
-  <button ion-button full color="redside">Medical Aid</button>
-  <br>
-  <button ion-button full color="redside">Schooling</button>
-
+        <h2>{{item.title}}</h2>
+        <p>{{item.description}}</p>
+        <button ion-button clear item-end>View</button>
+      </ion-item>
+    </ion-card>
+  </ion-list>
 </ion-content>

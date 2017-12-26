@@ -36,7 +36,7 @@ import { AddEdPage } from '../pages/add-ed/add-ed';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = FindFamilyPage;
+  rootPage: any = MyResourcesPage;
 
   pages: Array<{title: string, icon:string, component: any}>;
   uportpages: Array<{title: string, icon:string, component: any}>;
