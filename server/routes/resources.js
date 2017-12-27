@@ -5,6 +5,7 @@ var CONFIG = require('../config.json');
 var TOKEN_SECRET = CONFIG.token.secret;
 var TOKEN_EXPIRES = parseInt(CONFIG.token.expiresInSeconds, 10);
 var Job = require('../models/job');
+var Skill = require('../models/skill');
 var router = express.Router();
 var tokenMiddleware = require('../middleware/token');
 var rp = require('request-promise');
@@ -53,6 +54,56 @@ router.put('/job', function(req, res){
 
 router.delete('/job/:id', function(req, res){
   Job.findById(req.params.id, function (err, doc) {
+    if (err) {
+      res.json({success:false});
+    }
+    doc.remove(function (err) {
+      if (err) throw err;
+      res.json({success:true});
+    });
+  });
+});
+
+router.post('/skill', function(req, res){
+  var skill = new Skill(req.body);
+  console.log(skill);
+  skill.save(function (error) {
+    res.json({ success: true, skill: skill });
+  });
+});
+
+router.get('/skill/:id', function(req, res){
+  Skill.find({'ref':req.params.id}, function handleQuery(error, skills) {
+    console.log(skills);
+    if (skills == null) {
+      res.json({ success:false });
+    } else {
+      res.json({ success:true, skills:skills });
+    }
+  });
+});
+
+router.put('/skill', function(req, res){
+  Skill.findById(req.body['_id'], function(err, skill) {
+    if (err) { res.send(err); }
+
+    skill.title = req.body.title
+    skill.location = req.body.location
+    skill.description = req.body.description
+    skill.start = req.body.start
+    skill.end = req.body.end
+    skill.ref = req.body.ref
+
+    skill.save(function(err) {
+      if (err) { res.send(err); }
+      res.json({ success:true, skill:skill });
+    });
+
+  });
+});
+
+router.delete('/skill/:id', function(req, res){
+  Skill.findById(req.params.id, function (err, doc) {
     if (err) {
       res.json({success:false});
     }

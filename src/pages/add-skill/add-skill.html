@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-navbar color="mainbar">
+    <ion-title>{{title}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+          <ion-icon name="information-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content style="background-color: #eee;">
+
+  <ion-list>
+    <ion-list-header>
+      SKILL DETAILS
+    </ion-list-header>
+    <ion-card>
+      <p padding>
+        Please provide the following infomation on your skill set.
+      </p>
+      <ion-item>
+        <ion-label stacked>Job Title</ion-label>
+        <ion-input type="text" [(ngModel)]="form.title"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Location</ion-label>
+        <ion-input type="text" [(ngModel)]="form.location"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Description Of Role</ion-label>
+        <ion-input type="text" [(ngModel)]="form.description"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Start Date</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="form.start"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>End Date</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="form.end"></ion-datetime>
+      </ion-item>
+
+      <div padding style="background-color:white;">
+        <button ion-button full color="mainbar" (click)="create()">{{submitTitle}}</button>
+        <button *ngIf="updating" ion-button full color="redside" (click)="delete()">Delete Skill</button>
+      </div>
+
+    </ion-card>
+
+  </ion-list>
+
+</ion-content>

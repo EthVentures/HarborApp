@@ -21,6 +21,7 @@ import { FindFamilyPage } from '../pages/find-family/find-family';
 import { MyResourcesPage } from '../pages/my-resources/my-resources';
 import { ImageResizer, ImageResizerOptions } from '@ionic-native/image-resizer';
 import { TwoFactorFacePage } from '../pages/two-factor-face/two-factor-face';
+import { MySkillsPage } from '../pages/my-skills/my-skills';
 
 import { AnonymousSearchPage } from '../pages/anonymous-search/anonymous-search';
 
@@ -39,7 +40,7 @@ import { ListJobsPage } from '../pages/list-jobs/list-jobs';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = MyResourcesPage;
 
   pages: Array<{title: string, icon:string, component: any}>;
   uportpages: Array<{title: string, icon:string, component: any}>;
@@ -80,7 +81,8 @@ export class MyApp {
         if (obj != null) {
           if (obj.type == 'uport') {
             this.authServiceProvider.refugeeCheck().subscribe(data => {
-              console.log(JSON.stringify(data));
+              console.log(data.ref['_id']);
+              this.authServiceProvider.setID(data.ref['_id']);
               if (!data.found) {
                 let nfModal = this.modalCtrl.create(NewRefPage, { });
                 nfModal.onDidDismiss(obj => {

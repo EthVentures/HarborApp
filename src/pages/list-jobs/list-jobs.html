@@ -2,13 +2,19 @@
 
   <ion-navbar color="mainbar">
     <ion-title>Opened Jobs</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+          <ion-icon name="information-circle"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content style="background-color: #eee;">
-
+  <ion-searchbar>
+  </ion-searchbar>
   <ion-item *ngFor="let item of items; let i = index" [attr.data-index]="i">
     <h2>{{item.title}}</h2>
     <p>{{item.description}}</p>

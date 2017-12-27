@@ -39,6 +39,8 @@ import { FilePath } from '@ionic-native/file-path';
 import { Camera } from '@ionic-native/camera';
 import { ListJobsPage } from '../pages/list-jobs/list-jobs';
 import { JobDetailsPage } from '../pages/job-details/job-details';
+import { MySkillsPage } from '../pages/my-skills/my-skills';
+import { AddSkillPage } from '../pages/add-skill/add-skill';
 
 const config: SocketIoConfig = { url: 'http://192.168.50.52:3000/', options: {reconnect: true} };
 
@@ -67,7 +69,9 @@ const config: SocketIoConfig = { url: 'http://192.168.50.52:3000/', options: {re
     AddEdPage,
     RStatusPage,
     ListJobsPage,
-    JobDetailsPage
+    JobDetailsPage,
+    MySkillsPage,
+    AddSkillPage
   ],
   imports: [
     BrowserModule,
@@ -105,7 +109,9 @@ const config: SocketIoConfig = { url: 'http://192.168.50.52:3000/', options: {re
     AddEdPage,
     RStatusPage,
     ListJobsPage,
-    JobDetailsPage
+    JobDetailsPage,
+    MySkillsPage,
+    AddSkillPage
   ],
   providers: [
     StatusBar,

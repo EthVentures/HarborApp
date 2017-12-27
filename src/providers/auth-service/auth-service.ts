@@ -11,6 +11,7 @@ export class AuthServiceProvider {
   accountType:any;
   profile:any;
   token:any;
+  id:any;
 
   constructor(public http: Http, public storage:Storage, public appConfig:AppConfig) {
     this.isLogin = false;
@@ -26,6 +27,9 @@ export class AuthServiceProvider {
     });
     storage.get('profile').then((data) => {
       this.profile = data;
+    });
+    storage.get('id').then((data) => {
+      this.id = data;
     });
     storage.get('type').then((t) => {
       this.accountType = t;
@@ -45,10 +49,15 @@ export class AuthServiceProvider {
     this.isLogin = status;
   }
 
+  setID(id) {
+    this.storage.set('id', id);
+  }
+
   logoff() {
     this.storage.set('token', null);
     this.storage.set('profile', null);
     this.storage.set('type', null);
+    this.storage.set('id', null);
   }
 
   setAccount(rawd) {
@@ -73,6 +82,28 @@ export class AuthServiceProvider {
 
   //http://localhost:5000/api/v1.0/verification
   //http://localhost:5000/api/v1.0/identification
+
+  skillCreate(params) {
+    let body = JSON.stringify(params);
+    let head = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.post(this.appConfig.API_URL + "resources/skill", body, { headers : head }).map(res =>  res.json());
+  }
+
+  skillGet(id) {
+    let head = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.get(this.appConfig.API_URL + "resources/skill/" + id, { headers : head }).map(res =>  res.json());
+  }
+
+  skillUpdate(params) {
+    let body = JSON.stringify(params);
+    let head = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.put(this.appConfig.API_URL + "resources/skill", body, { headers : head }).map(res =>  res.json());
+  }
+
+  skillDelete(id) {
+    let head = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.delete(this.appConfig.API_URL + "resources/skill/" + id, { headers : head }).map(res =>  res.json());
+  }
 
   jobCreate(params) {
     let body = JSON.stringify(params);

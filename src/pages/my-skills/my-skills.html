@@ -1,9 +1,6 @@
 <ion-header>
   <ion-navbar color="mainbar">
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Job Listing</ion-title>
+    <ion-title>My Skills</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="add()">
           <ion-icon name="add"></ion-icon>
@@ -14,11 +11,10 @@
 
 
 <ion-content style="background-color: #eee;">
-  <ion-searchbar>
-</ion-searchbar>
-  <ion-item *ngFor="let item of items; let i = index" [attr.data-index]="i">
+
+  <ion-item *ngFor="let item of skills; let i = index" [attr.data-index]="i">
     <h2>{{item.title}}</h2>
-    <p>{{item.description}}</p>
+    <p>{{item.start}} - {{item.end}}</p>
     <button ion-button clear item-end (click)="update(item)">View</button>
   </ion-item>
 
