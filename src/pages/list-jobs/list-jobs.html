@@ -1,15 +1,9 @@
 <ion-header>
+
   <ion-navbar color="mainbar">
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Job Listing</ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="add()">
-          <ion-icon name="add"></ion-icon>
-      </button>
-    </ion-buttons>
+    <ion-title>Opened Jobs</ion-title>
   </ion-navbar>
+
 </ion-header>
 
 
@@ -19,7 +13,6 @@
     <h2>{{item.title}}</h2>
     <p>{{item.description}}</p>
     <button ion-button clear item-end (click)="view(item)">View</button>
-    <button ion-button clear item-end (click)="update(item)">Edit</button>
   </ion-item>
 
 </ion-content>

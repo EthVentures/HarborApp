@@ -30,6 +30,9 @@ import { AddTrainingPage } from '../pages/add-training/add-training';
 import { AddEdPage } from '../pages/add-ed/add-ed';
 import { RStatusPage } from '../pages/r-status/r-status';
 
+import { ListJobsPage } from '../pages/list-jobs/list-jobs';
+
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -41,6 +44,8 @@ export class MyApp {
   pages: Array<{title: string, icon:string, component: any}>;
   uportpages: Array<{title: string, icon:string, component: any}>;
   providerpages: Array<{title: string, icon:string, component: any}>;
+
+  tfaEnabled = false;
 
   constructor(public appConfig:AppConfig,public modalCtrl: ModalController,public authServiceProvider:AuthServiceProvider,public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
@@ -83,6 +88,7 @@ export class MyApp {
                 });
                 nfModal.present();
               } else {
+                if (this.tfaEnabled) {
                 let tfaModal = this.modalCtrl.create(TwoFactorFacePage, { });
                 tfaModal.onDidDismiss(obj => {
                   if (!obj.status) {
@@ -91,6 +97,7 @@ export class MyApp {
                   }
                 });
                 tfaModal.present();
+                }
               }
             });
           }

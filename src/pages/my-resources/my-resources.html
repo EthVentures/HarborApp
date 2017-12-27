@@ -31,9 +31,20 @@
         <ion-icon name="book" item-start color="navbar"></ion-icon>
         <ion-label>Educational Opportunity</ion-label>
       </button>
-        <button ion-item>
+        <button ion-item (click)="jobs()">
         <ion-icon name="hammer" item-start color="navbar"></ion-icon>
         <ion-label>Find Job</ion-label>
+      </button>
+      </ion-list>
+    </ion-card>
+    <ion-list-header>
+       RESUME
+    </ion-list-header>
+    <ion-card>
+      <ion-list>
+        <button ion-item>
+        <ion-icon name="apps" item-start color="navbar"></ion-icon>
+        <ion-label>Manage Skills & Resume</ion-label>
       </button>
       </ion-list>
     </ion-card>

@@ -4,12 +4,11 @@ import { AddJobPage } from '../add-job/add-job';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { JobDetailsPage } from '../job-details/job-details';
 
-@IonicPage()
 @Component({
-  selector: 'page-jobs',
-  templateUrl: 'jobs.html',
+  selector: 'page-list-jobs',
+  templateUrl: 'list-jobs.html',
 })
-export class JobsPage {
+export class ListJobsPage {
 
   items:any = []
   constructor(public authServiceProvider:AuthServiceProvider,public navCtrl: NavController, public navParams: NavParams) {
@@ -23,16 +22,8 @@ export class JobsPage {
     });
   }
 
-  add() {
-    this.navCtrl.push(AddJobPage, { state:'create' });
-  }
-
-  update(obj) {
-    this.navCtrl.push(AddJobPage, { state:'update', item:obj });
-  }
-
   view(item) {
-    this.navCtrl.push(JobDetailsPage, { state:'gov', item:item });
+    this.navCtrl.push(JobDetailsPage, { state:'ref', item:item });
   }
 
 }

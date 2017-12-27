@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import dateformat from 'dateformat';
+import { ListJobsPage } from '../list-jobs/list-jobs';
 
 @Component({
   selector: 'page-my-resources',
@@ -15,6 +16,10 @@ export class MyResourcesPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyResourcesPage');
+  }
+
+  jobs() {
+    this.navCtrl.push(ListJobsPage);
   }
 
   events = [

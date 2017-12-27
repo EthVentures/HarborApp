@@ -90,9 +90,9 @@ router.post('/findFamily', function(req, res){
         }
       }
       Image.find({ '_id': { $in: ids } }, function(err, images){
-        console.log(JSON.stringify(images));
-        console.log(JSON.stringify(temp));
-        console.log(ids);
+        //console.log(JSON.stringify(images));
+        //console.log(JSON.stringify(temp));
+        //console.log(ids);
         var results = [];
         for (var i = 0; i < images.length; i++) {
           var nobj = JSON.parse(JSON.stringify(images[i]));

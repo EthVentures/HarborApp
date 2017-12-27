@@ -21,12 +21,7 @@ export class ServicesPage {
   }
 
   items = [
-    'Kitchen Staff',
-    'Pharmacy Techician',
-    'Cashier',
-    'Businesss Systems Analyst',
-    'Pet Walker',
-    'Office Administrative Assistant'
+
   ];
 
   itemSelected(item: string) {
