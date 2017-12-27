@@ -17,10 +17,12 @@ export class FindFamilyPage {
   hasSearch = false;
   rightItemIcon = 'information-circle';
   cardTitle = 'FIND FAMILY';
+  isSpinner:boolean;
 
   constructor(public camera:Camera,public navCtrl: NavController, public navParams: NavParams,public authServiceProvider:AuthServiceProvider) {
     this.tempimage = '';
     this.predictions = [];
+    this.isSpinner = false;
   }
 
   ionViewDidLoad() {
@@ -137,6 +139,7 @@ export class FindFamilyPage {
     if (this.hasSearch) {
       this.haveImg = false;
       this.hasSearch = false;
+      this.isSpinner = false;
       this.tempimage = '';
       this.predictions = [];
       this.rightItemIcon = 'information-circle';
@@ -148,6 +151,7 @@ export class FindFamilyPage {
 
   search() {
     if (this.haveImg) {
+      this.isSpinner = true;
       console.log("Finding Family");
       var payload = { 'query': this.tempimage };
       this.authServiceProvider.imageIdentification(payload).subscribe(results => {
@@ -156,6 +160,7 @@ export class FindFamilyPage {
         this.hasSearch = true;
         this.rightItemIcon = 'refresh-circle';
         this.cardTitle = 'RESULTS';
+        this.isSpinner = false;
         for (var i = 0; i < this.predictions.length; i++) {
           this.getImage(i,this.predictions[i]);
         }

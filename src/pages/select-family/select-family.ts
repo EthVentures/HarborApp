@@ -18,6 +18,7 @@ export class SelectFamilyPage {
   notes:any;
   temp:any;
   relationship:any;
+  missing:any;
   constructor(public toastCtrl: ToastController,public authServiceProvider:AuthServiceProvider,private camera: Camera,public viewController:ViewController,public navCtrl: NavController, public navParams: NavParams) {
     this.famImage = '';
     this.firstName = '';
@@ -27,6 +28,7 @@ export class SelectFamilyPage {
     this.notes = '';
     this.temp = {};
     this.relationship = '';
+    this.missing = false;
   }
 
   ionViewDidLoad() {
@@ -53,6 +55,7 @@ export class SelectFamilyPage {
       age:this.age,
       notes:this.notes,
       location:this.location,
+      missing:this.missing,
       user: {
         type:'uport'
       },

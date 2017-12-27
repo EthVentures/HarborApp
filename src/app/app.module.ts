@@ -7,7 +7,6 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { WindowRef } from './WindowRef';
@@ -31,16 +30,15 @@ import { AddJobPage } from '../pages/add-job/add-job';
 import { AddMedPage } from '../pages/add-med/add-med';
 import { AddTrainingPage } from '../pages/add-training/add-training';
 import { AddEdPage } from '../pages/add-ed/add-ed';
-
+import { RStatusPage } from '../pages/r-status/r-status';
 import { AppConfig } from '../config/app.config';
-
+import { AgmCoreModule } from '@agm/core';
 import { File } from '@ionic-native/file';
 import { Transfer } from '@ionic-native/transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { Camera } from '@ionic-native/camera';
 
-const config: SocketIoConfig = { url: 'http://192.168.1.82:3000/', options: {reconnect: true} };
-import { AgmCoreModule } from '@agm/core';
+const config: SocketIoConfig = { url: 'http://192.168.50.52:3000/', options: {reconnect: true} };
 
 @NgModule({
   declarations: [
@@ -64,7 +62,8 @@ import { AgmCoreModule } from '@agm/core';
     AddJobPage,
     AddMedPage,
     AddTrainingPage,
-    AddEdPage
+    AddEdPage,
+    RStatusPage
   ],
   imports: [
     BrowserModule,
@@ -99,7 +98,8 @@ import { AgmCoreModule } from '@agm/core';
     AddJobPage,
     AddMedPage,
     AddTrainingPage,
-    AddEdPage
+    AddEdPage,
+    RStatusPage
   ],
   providers: [
     StatusBar,

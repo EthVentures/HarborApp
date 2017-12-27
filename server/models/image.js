@@ -31,6 +31,9 @@ var schema = new Schema({
   relationship: {
     type: String
   },
+  missing: {
+    type: Boolean
+  },
   createdAt: {
     type: Date
   },

@@ -55,7 +55,7 @@
             </ion-row>
             <ion-row>
               <ion-col>
-                <button ion-button full color="mainbar" (click)="search()"><b>Search</b></button>
+                <button ion-button full color="mainbar" (click)="search()"><b>Search</b><ion-spinner name="bubbles" *ngIf="isSpinner"></ion-spinner></button>
               </ion-col>
             </ion-row>
           </ion-grid>

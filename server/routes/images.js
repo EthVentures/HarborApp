@@ -16,7 +16,7 @@ router.post('/addBiometrics', function(req, res){
   var image = new Image(req.body);
   var options = {
     method: 'POST',
-    uri: 'http://localhost:5000/api/v1.0/image/save',
+    uri: CONFIG.biometric.API_URL + CONFIG.biometric.SAVE_IMAGE_ROUTE,
     body: {
       'image': req.body['image'],
       'filename':image['_id'] + '.jpeg'
@@ -44,7 +44,7 @@ router.post('/deleteBiometrics', function(req, res){
   var image = req.body;
   var options = {
     method: 'POST',
-    uri: 'http://localhost:5000/api/v1.0/image/delete',
+    uri: CONFIG.biometric.API_URL + CONFIG.biometric.SAVE_IMAGE_ROUTE,
     body: {
       'filename':image['_id'] + '.jpeg'
     }, json: true
@@ -74,7 +74,7 @@ router.post('/findFamily', function(req, res){
 
   var options = {
     method: 'POST',
-    uri: 'http://localhost:5000/api/v1.0/identification',
+    uri: CONFIG.biometric.API_URL + CONFIG.biometric.IDENTIFICATION_ROUTE,
     body: req.body, json: true
   };
 

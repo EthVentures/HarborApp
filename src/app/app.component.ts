@@ -28,7 +28,7 @@ import { AddJobPage } from '../pages/add-job/add-job';
 import { AddMedPage } from '../pages/add-med/add-med';
 import { AddTrainingPage } from '../pages/add-training/add-training';
 import { AddEdPage } from '../pages/add-ed/add-ed';
-
+import { RStatusPage } from '../pages/r-status/r-status';
 
 @Component({
   templateUrl: 'app.html'
@@ -36,7 +36,7 @@ import { AddEdPage } from '../pages/add-ed/add-ed';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = MyResourcesPage;
+  rootPage: any = HomePage;
 
   pages: Array<{title: string, icon:string, component: any}>;
   uportpages: Array<{title: string, icon:string, component: any}>;
@@ -54,7 +54,7 @@ export class MyApp {
       { title: 'Home', icon:'home', component: HomePage },
       { title: 'Find Family', icon:'contacts', component: FindFamilyPage },
       { title: 'Resources', icon:'hammer', component: MyResourcesPage },
-      { title: 'Status', icon:'stats',component: HomePage }
+      { title: 'Status', icon:'stats',component: RStatusPage }
     ];
 
     this.providerpages = [
