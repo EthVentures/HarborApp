@@ -3,11 +3,13 @@
 
 Home Screen | Refugee View | Service Provider View
 --- | --- | ---
-<img src="https://github.com/EthVentures/HarborApp/raw/master/src/assets/ss1.png" alt="safe harbor home screen" style="width: 250px;"/>| <img src="https://github.com/EthVentures/HarborApp/raw/master/src/assets/ss2.png" alt="refugee view" style="width: 250px;"/>| !<img src="https://github.com/EthVentures/HarborApp/raw/master/src/assets/ss3.png" alt="service provider view" style="width: 250px;"/>
+<img src="https://github.com/EthVentures/HarborApp/raw/master/src/assets/ss1.png" alt="safe harbor home screen" style="width: 250px;"/>| <img src="https://github.com/EthVentures/HarborApp/raw/master/src/assets/ss2.png" alt="refugee view" style="width: 250px;"/>| <img src="https://github.com/EthVentures/HarborApp/raw/master/src/assets/ss3.png" alt="service provider view" style="width: 250px;"/>
 
 ## Identity Management
 The first step to using our app is the establishment of self-sovereign identification powered by [uPort](https://uport.me/) - which allows interaction with the Ethereum network without the need for login and passwords. At the same time, their decentralized identity is accompanied by the ability to serve as a value store that cannot be frozen, altered, or stolen by any government or private entity. Additionally, many of Harbor’s services can be viewed anonymously without the need to login to ease concerns of those fleeing from hostile/authoritative regimes.
-
+<p align="center">
+<img src="https://projectsafeharbor.com/wp-content/uploads/2017/12/logo@3x-1.png" alt="service provider view" style="width: 250px;"/>
+</p>
 Our goal is to provide refugees and with the tools they need to establish identity, access educational and job training opportunities, secure medical care, and reunite with family members - tools that are critical for successful resettlements, but are very difficult to accomplish today.
 ## Education & Job Training
 With Harbor, the goal is to get short-term employment and education opportunities in front of refugees within days of arrival. Each completed class or training session is added as an attestation to their digital identity. Existing barriers to employment can be eased when our users are able to provide a biometrically secure, verifiable job history.
