@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar color="mainbar">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>My Account</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="background-color: #eee;">
+
+  <ion-list>
+    <ion-list-header>
+      {{name}}
+    </ion-list-header>
+    <ion-card>
+
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img  [src]="image">
+        </ion-thumbnail>
+        <ion-label stacked><b>Name</b></ion-label>
+        <ion-input type="text" [(ngModel)]="account.name" disabled="true"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked><b>Address</b></ion-label>
+        <ion-input type="text" [(ngModel)]="account.address" disabled="true"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked><b>Country</b></ion-label>
+        <ion-input type="text" [(ngModel)]="account.country" disabled="true"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked><b>Public EncKey</b></ion-label>
+        <ion-textarea type="text" [(ngModel)]="account.publicEncKey" disabled="true"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked><b>Public Key</b></ion-label>
+        <ion-textarea type="text" [(ngModel)]="account.publicKey" disabled="true"></ion-textarea>
+      </ion-item>
+
+    </ion-card>
+    <ion-list-header>
+      FAMILY
+    </ion-list-header>
+    <ion-card>
+      <button ion-item (click)="manage()">
+        <ion-icon name="person" item-start color="navbar"></ion-icon>
+        <ion-label>Manage Family Members</ion-label>
+      </button>
+    </ion-card>
+  </ion-list>
+
+</ion-content>

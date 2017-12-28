@@ -33,6 +33,7 @@ import { RStatusPage } from '../pages/r-status/r-status';
 
 import { ListJobsPage } from '../pages/list-jobs/list-jobs';
 
+import { MyAccountPage } from '../pages/my-account/my-account';
 
 @Component({
   templateUrl: 'app.html'
@@ -60,7 +61,8 @@ export class MyApp {
       { title: 'Home', icon:'home', component: HomePage },
       { title: 'Find Family', icon:'contacts', component: FindFamilyPage },
       { title: 'Resources', icon:'hammer', component: MyResourcesPage },
-      { title: 'Status', icon:'stats',component: RStatusPage }
+      { title: 'Status', icon:'stats',component: RStatusPage },
+      { title: 'My Account', icon:'person',component: MyAccountPage }
     ];
 
     this.providerpages = [

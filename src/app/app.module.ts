@@ -41,6 +41,8 @@ import { ListJobsPage } from '../pages/list-jobs/list-jobs';
 import { JobDetailsPage } from '../pages/job-details/job-details';
 import { MySkillsPage } from '../pages/my-skills/my-skills';
 import { AddSkillPage } from '../pages/add-skill/add-skill';
+import { MyAccountPage } from '../pages/my-account/my-account';
+import { ManageFmPage } from '../pages/manage-fm/manage-fm';
 
 const config: SocketIoConfig = { url: 'http://192.168.50.52:3000/', options: {reconnect: true} };
 
@@ -71,7 +73,9 @@ const config: SocketIoConfig = { url: 'http://192.168.50.52:3000/', options: {re
     ListJobsPage,
     JobDetailsPage,
     MySkillsPage,
-    AddSkillPage
+    AddSkillPage,
+    MyAccountPage,
+    ManageFmPage
   ],
   imports: [
     BrowserModule,
@@ -111,7 +115,9 @@ const config: SocketIoConfig = { url: 'http://192.168.50.52:3000/', options: {re
     ListJobsPage,
     JobDetailsPage,
     MySkillsPage,
-    AddSkillPage
+    AddSkillPage,
+    MyAccountPage,
+    ManageFmPage
   ],
   providers: [
     StatusBar,
