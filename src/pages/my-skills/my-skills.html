@@ -11,11 +11,16 @@
 
 
 <ion-content style="background-color: #eee;">
-
-  <ion-item *ngFor="let item of skills; let i = index" [attr.data-index]="i">
-    <h2>{{item.title}}</h2>
-    <p>{{item.start}} - {{item.end}}</p>
-    <button ion-button clear item-end (click)="update(item)">View</button>
-  </ion-item>
-
+  <ion-list>
+    <ion-list-header>
+      MY SKILLS
+    </ion-list-header>
+    <ion-card>
+    <ion-item *ngFor="let item of skills; let i = index" [attr.data-index]="i">
+      <h2>{{item.title}}</h2>
+      <p>{{item.start}} - {{item.end}}</p>
+      <button ion-button clear item-end (click)="update(item)">View</button>
+    </ion-item>
+    </ion-card>
+  </ion-list>
 </ion-content>
