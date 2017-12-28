@@ -34,9 +34,10 @@
         <ion-input type="text"></ion-input>
       </ion-item>
       <div padding style="background-color:white;">
-        <button ion-button full color="mainbar" (click)="anonymouscamera()">Take A Picture</button>
+        <button ion-button full color="mainbar" (click)="anonymouscamera()" *ngIf="!haveImg">Take A Picture</button>
+        <button ion-button full color="redside" (click)="retake()" *ngIf="haveImg">Retake Image</button>
         <br>
-        <button ion-button full color="dark" (click)="find()">Search</button>
+        <button ion-button full color="mainbar" (click)="find()" *ngIf="haveImg">Search<ion-spinner name="bubbles" *ngIf="isSpinner"></ion-spinner></button>
       </div>
     </ion-card>
     <ion-list-header>

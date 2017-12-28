@@ -7,6 +7,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import { ListJobsPage } from '../list-jobs/list-jobs';
+import { AmResultsPage } from '../am-results/am-results';
 
 @Component({
   selector: 'page-anonymous-search',
@@ -15,7 +16,12 @@ import { ListJobsPage } from '../list-jobs/list-jobs';
 export class AnonymousSearchPage {
 
   tempimage:any;
-  constructor(public toastController:ToastController,public _DomSanitizer:DomSanitizer,public authServiceProvider:AuthServiceProvider,private camera: Camera,public navCtrl: NavController, public navParams: NavParams) {
+  predictions:any;
+  haveImg = false;
+  hasSearch = false;
+  isSpinner:boolean;
+
+  constructor(public toastCtrl:ToastController,public _DomSanitizer:DomSanitizer,public authServiceProvider:AuthServiceProvider,private camera: Camera,public navCtrl: NavController, public navParams: NavParams) {
     this.tempimage = '';
   }
 
@@ -47,6 +53,11 @@ export class AnonymousSearchPage {
         observer.complete();
       }
     });
+  }
+
+  retake() {
+    this.tempimage = '';
+    this.haveImg = false;
   }
 
   rotateBase64Image(base64data, givenDegrees, callback) {
@@ -99,7 +110,12 @@ export class AnonymousSearchPage {
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
     }
+    let toast = this.toastCtrl.create({
+      message: 'Please wait, processing picture for biometrics...',
+      position:'middle'
+    });
     this.camera.getPicture(options).then((imageData) => {
+      toast.present();
       var data = { 'image': imageData, 'format': 'jpeg' }
       this.authServiceProvider.imageResize(data).subscribe(res_resize => {
         console.log("Image resized/rotating...");
@@ -107,6 +123,8 @@ export class AnonymousSearchPage {
         var current_scope = this;
         this.rotateBase64Image('data:image/jpeg;base64,' + reimg,90,function(rotate_data) {
           current_scope.tempimage = rotate_data;
+          current_scope.haveImg = true;
+          toast.dismiss();
         })
       });
     }, (err) => {
@@ -115,7 +133,22 @@ export class AnonymousSearchPage {
   }
 
   find() {
-
+    if (this.haveImg) {
+      this.isSpinner = true;
+      console.log("Finding Family");
+      var payload = { 'query': this.tempimage.split(',')[1] };
+      this.authServiceProvider.imageIdentification(payload).subscribe(results => {
+        console.log(JSON.stringify(results));
+        this.isSpinner = false;
+        this.predictions = results;
+        this.hasSearch = true;
+        this.retake();
+        this.navCtrl.push(AmResultsPage, {results:results});
+      }, error => {
+        console.log("error");
+        console.log(JSON.stringify(error));
+      });
+    }
   }
 
 }

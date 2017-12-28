@@ -77,6 +77,8 @@ export class NewRefPage {
       images.push(this.photos[i]['_id']);
     }
     this.authServiceProvider.refugeeSet(images).subscribe(data => {
+      console.log(JSON.stringify(data));
+      this.authServiceProvider.setID(data.refugee['_id']);
       this.viewController.dismiss({
         status:true
       });

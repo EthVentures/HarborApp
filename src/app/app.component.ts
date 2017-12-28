@@ -83,7 +83,6 @@ export class MyApp {
         if (obj != null) {
           if (obj.type == 'uport') {
             this.authServiceProvider.refugeeCheck().subscribe(data => {
-              console.log(data.ref['_id']);
               if (!data.found) {
                 let nfModal = this.modalCtrl.create(NewRefPage, { });
                 nfModal.onDidDismiss(obj => {

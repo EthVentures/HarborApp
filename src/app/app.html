@@ -7,22 +7,22 @@
   <ion-content style="background: #eee;">
     <div *ngIf="!authServiceProvider.isLogin">
       <ion-list>
-        <ion-item menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        <button ion-item menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
           <ion-icon name="{{p.icon}}" item-start color="navbar"></ion-icon>
           <ion-label>{{p.title}}</ion-label>
-        </ion-item>
-        <ion-item menuClose ion-item (click)="login()">
+        </button>
+        <button ion-item menuClose ion-item (click)="login()">
           <ion-icon name="log-in" item-start color="navbar"></ion-icon>
           <ion-label>Login</ion-label>
-        </ion-item>
-        <ion-item menuClose ion-item (click)="register(p)">
+        </button>
+        <button ion-item menuClose ion-item (click)="register(p)">
           <ion-icon name="person" item-start color="navbar"></ion-icon>
           <ion-label>Register</ion-label>
-        </ion-item>
-        <ion-item menuClose ion-item (click)="about()">
+        </button>
+        <button ion-item menuClose ion-item (click)="about()">
           <ion-icon name="information-circle" item-start color="navbar"></ion-icon>
           <ion-label>About</ion-label>
-        </ion-item>
+        </button>
       </ion-list>
     </div>
     <div *ngIf="authServiceProvider.isLogin">

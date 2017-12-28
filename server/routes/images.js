@@ -90,6 +90,7 @@ router.post('/findFamily', function(req, res){
   };
 
   rp(options).then(function (resp) {
+      console.log(JSON.stringify(resp));
       var predictions = resp.response[0].scores;
       var ids = [];
       var temp = {};

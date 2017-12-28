@@ -37,6 +37,7 @@ export class ManageFmPage {
     select.onDidDismiss(obj => {
       if (obj.status) {
         var famPerson = obj['data'];
+        famPerson['hasImg'] = true;
         this.photos.push(famPerson);
       }
     });

@@ -1,0 +1,31 @@
+<ion-header>
+
+  <ion-navbar color="mainbar">
+    <ion-title>Results</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+          <ion-icon name="information-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content style="background-color: #eee;">
+
+  <ion-list>
+    <ion-list-header>
+      RESULTS
+    </ion-list-header>
+    <ion-card>
+  <ion-item *ngFor="let item of photos; let i = index" [attr.data-index]="i">
+    <ion-thumbnail item-start *ngIf="item.hasImg">
+      <img [src]="item.image">
+    </ion-thumbnail>
+    <h2>{{item.firstName}} {{item.lastName}}</h2>
+    <p>{{relationship(item.relationship)}}</p>
+  </ion-item>
+</ion-card>
+</ion-list>
+</ion-content>
