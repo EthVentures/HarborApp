@@ -29,8 +29,8 @@ export class AddSkillPage {
     };
     var state = this.navParams.get('state');
     if (state == 'create') {
-      this.submitTitle = "Post Skill";
-      this.title = "Post Skill";
+      this.submitTitle = "Add Skill";
+      this.title = "Add Skill";
       this.updating = false;
     }
     if (state == 'update') {

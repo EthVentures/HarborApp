@@ -16,11 +16,10 @@
       MY SKILLS
     </ion-list-header>
     <ion-card>
-    <ion-item *ngFor="let item of skills; let i = index" [attr.data-index]="i">
+    <button ion-item *ngFor="let item of skills; let i = index" [attr.data-index]="i" (click)="update(item)">
       <h2>{{item.title}}</h2>
       <p>{{item.start}} - {{item.end}}</p>
-      <button ion-button clear item-end (click)="update(item)">View</button>
-    </ion-item>
-    </ion-card>
+    </button>
+  </ion-card>
   </ion-list>
 </ion-content>

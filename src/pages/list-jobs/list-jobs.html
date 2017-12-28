@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar color="mainbar">
-    <ion-title>Opened Jobs</ion-title>
+    <ion-title>Job Openings</ion-title>
     <ion-buttons end>
       <button ion-button icon-only>
           <ion-icon name="information-circle"></ion-icon>
@@ -15,10 +15,9 @@
 <ion-content style="background-color: #eee;">
   <ion-searchbar>
   </ion-searchbar>
-  <ion-item *ngFor="let item of items; let i = index" [attr.data-index]="i">
+  <button ion-item *ngFor="let item of items; let i = index" [attr.data-index]="i" (click)="view(item)">
     <h2>{{item.title}}</h2>
     <p>{{item.description}}</p>
-    <button ion-button clear item-end (click)="view(item)">View</button>
-  </ion-item>
+  </button>
 
 </ion-content>

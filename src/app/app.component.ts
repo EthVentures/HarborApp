@@ -40,7 +40,7 @@ import { ListJobsPage } from '../pages/list-jobs/list-jobs';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = MyResourcesPage;
+  rootPage: any = HomePage;
 
   pages: Array<{title: string, icon:string, component: any}>;
   uportpages: Array<{title: string, icon:string, component: any}>;
@@ -82,7 +82,6 @@ export class MyApp {
           if (obj.type == 'uport') {
             this.authServiceProvider.refugeeCheck().subscribe(data => {
               console.log(data.ref['_id']);
-              this.authServiceProvider.setID(data.ref['_id']);
               if (!data.found) {
                 let nfModal = this.modalCtrl.create(NewRefPage, { });
                 nfModal.onDidDismiss(obj => {
@@ -90,6 +89,7 @@ export class MyApp {
                 });
                 nfModal.present();
               } else {
+                this.authServiceProvider.setID(data.ref['_id']);
                 if (this.tfaEnabled) {
                 let tfaModal = this.modalCtrl.create(TwoFactorFacePage, { });
                 tfaModal.onDidDismiss(obj => {

@@ -19,6 +19,10 @@
     </ion-list-header>
     <ion-card>
       <ion-list>
+        <button ion-item (click)="jobs()">
+        <ion-icon name="hammer" item-start color="navbar"></ion-icon>
+        <ion-label>Find Job</ion-label>
+      </button>
         <button ion-item>
         <ion-icon name="pulse" item-start color="navbar"></ion-icon>
         <ion-label>Medical Services</ion-label>
@@ -30,10 +34,6 @@
         <button ion-item>
         <ion-icon name="book" item-start color="navbar"></ion-icon>
         <ion-label>Educational Opportunity</ion-label>
-      </button>
-        <button ion-item (click)="jobs()">
-        <ion-icon name="hammer" item-start color="navbar"></ion-icon>
-        <ion-label>Find Job</ion-label>
       </button>
       </ion-list>
     </ion-card>
@@ -49,16 +49,15 @@
       </ion-list>
     </ion-card>
     <ion-list-header>
-      UPCOMING EVENTS - {{datetime}}
+      UPCOMING - {{datetime}}
     </ion-list-header>
     <ion-card>
-      <ion-item *ngFor="let item of events; let i = index" [attr.data-index]="i">
+      <button ion-item *ngFor="let item of events; let i = index" [attr.data-index]="i">
         <ion-icon name="{{item.icon}}" item-start color="navbar"></ion-icon>
 
         <h2>{{item.title}}</h2>
         <p>{{item.description}}</p>
-        <button ion-button clear item-end>View</button>
-      </ion-item>
+      </button>
     </ion-card>
   </ion-list>
 </ion-content>

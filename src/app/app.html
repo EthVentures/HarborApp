@@ -1,10 +1,10 @@
 <ion-menu [content]="content">
   <ion-header>
     <ion-toolbar color="redside">
-      <ion-title>PSH</ion-title>
+      <ion-title>Harbor</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-content>
+  <ion-content style="background: #eee;">
     <div *ngIf="!authServiceProvider.isLogin">
       <ion-list>
         <ion-item menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
@@ -28,27 +28,27 @@
     <div *ngIf="authServiceProvider.isLogin">
 
       <ion-list *ngIf="authServiceProvider.accountType == 'uport'">
-        <ion-item menuClose ion-item *ngFor="let p of uportpages" (click)="openPage(p)">
+        <button ion-item menuClose ion-item *ngFor="let p of uportpages" (click)="openPage(p)">
           <ion-icon name="{{p.icon}}" item-start color="navbar"></ion-icon>
           <ion-label>{{p.title}}</ion-label>
-        </ion-item>
+        </button>
 
-        <ion-item menuClose ion-item class="submit-btn" type="submit" color="menutheme" (click)="logoff()">
+        <button ion-item menuClose ion-item class="submit-btn" type="submit" color="menutheme" (click)="logoff()">
           <ion-icon name="log-out" item-start color="navbar"></ion-icon>
           <ion-label>Exit</ion-label>
-        </ion-item>
+        </button>
       </ion-list>
 
       <ion-list *ngIf="authServiceProvider.accountType == 'provider'">
-        <ion-item menuClose ion-item *ngFor="let p of providerpages" (click)="openPage(p)">
+        <button ion-item menuClose ion-item *ngFor="let p of providerpages" (click)="openPage(p)">
           <ion-icon name="{{p.icon}}" item-start color="navbar"></ion-icon>
           <ion-label>{{p.title}}</ion-label>
-        </ion-item>
+        </button>
 
-        <ion-item menuClose ion-item class="submit-btn" type="submit" color="menutheme" (click)="logoff()">
+        <button ion-item menuClose ion-item class="submit-btn" type="submit" color="menutheme" (click)="logoff()">
           <ion-icon name="log-out" item-start color="navbar"></ion-icon>
           <ion-label>Exit</ion-label>
-        </ion-item>
+        </button>
       </ion-list>
     </div>
   </ion-content>

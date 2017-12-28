@@ -6,6 +6,7 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
+import { ListJobsPage } from '../list-jobs/list-jobs';
 
 @Component({
   selector: 'page-anonymous-search',
@@ -84,6 +85,10 @@ export class AnonymousSearchPage {
 
   ionViewDidLoad() {
 
+  }
+
+  job() {
+    this.navCtrl.push(ListJobsPage);
   }
 
   anonymouscamera() {
