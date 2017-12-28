@@ -4,7 +4,9 @@
 
 
 # Welcome to Project Safe Harbor
-[Project Safe Harbor](https://projectsafeharbor.com), is is an open source platform that leverages blockchain and artificial intelligence to enable societies and communities to provide basic resources, safety, and security to the more than 65 million asylum seekers around the world. This project launched in December 2017 as a submission to the [World Virtual Govhack](http://hackathon.govtechprize.ae/) hackathon. We focus on the top challenges asylum seekers face - **establishing identity, accessing educational and job training opportunities, securing medical care, and reuniting with family members.**
+[Project Safe Harbor](https://projectsafeharbor.com), is is an open source platform that leverages blockchain and artificial intelligence to enable societies and communities to provide basic resources, safety, and security to the more than 65 million asylum seekers around the world.
+
+This project launched in December 2017 as a submission to the [World Virtual Govhack](http://hackathon.govtechprize.ae/) hackathon. We focus on the top challenges asylum seekers face - **establishing identity, accessing educational and job training opportunities, securing medical care, and reuniting with family members.**
 
 Home Screen | Refugee View | Service Provider View
 --- | --- | ---
@@ -20,7 +22,9 @@ Our goal is to provide refugees and with the tools they need to establish identi
 With Harbor, the goal is to get short-term employment and education opportunities in front of refugees within days of arrival. Each completed class or training session is added as an attestation to their digital identity. Existing barriers to employment can be eased when our users are able to provide a biometrically secure, verifiable job history.
 
 ## Reuniting Families Through Facial Recognition
-Harbor’s AI leverages open source biometric recognition [OpenBR](http://openbiometrics.org/) to perform a variety of facial recognition tasks, including age and gender estimation, 1:1 face match verification, and 1:N face match identification. This enables our platform to become a powerful reunification tool that gives families that have been torn apart by economic, political, or natural disasters, a chance at being reunited on an opt-in basis. Even if years have passed, Harbor can accurately identify family from a photograph alone.
+
+Families around the world are torn apart by economic, political, or natural disasters. Harbor’s AI leverages open source biometric recognition [(OpenBR)](http://openbiometrics.org/) to perform a variety of facial recognition tasks, including age and gender estimation, 1:1 face match verification, and 1:N face match identification, which enables our platform to not only be biometrically secure, but also serve a powerful tool for reunification (on an opt-in basis). For instance, if a family has been separated by a disaster, Harbor’s 1:N face match identification makes it easy to determine if a family member is located at a participating refugee camp. Even if years have passed, Harbor can, from a photograph alone, accurately identify family members and the camps they’ve visited. 
+
 
 ## Video
 
