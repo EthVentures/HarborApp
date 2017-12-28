@@ -1,6 +1,9 @@
+<p align="center">
+<img src="https://github.com/EthVentures/HarborApp/raw/master/src/assets/safeharborlogo.png" alt="service provider view" style="width: 250px;"/>
+</p>
 
-[![EthVentures](https://github.com/EthVentures/HarborApp/raw/master/src/assets/safeharborlogo.png)](https://projectsafeharbor.com)
 
+# Welcome to Project Safe Harbor
 [Project Safe Harbor](https://projectsafeharbor.com), is is an open source platform that leverages blockchain and artificial intelligence to enable societies and communities to provide basic resources, safety, and security to the more than 65 million asylum seekers around the world. This project launched in December 2017 as a submission to the [World Virtual Govhack](http://hackathon.govtechprize.ae/) hackathon. We focus on the top challenges asylum seekers face - **establishing identity, accessing educational and job training opportunities, securing medical care, and reuniting with family members.**
 
 Home Screen | Refugee View | Service Provider View
@@ -13,7 +16,6 @@ The first step to using our app is the establishment of self-sovereign identific
 <img src="https://projectsafeharbor.com/wp-content/uploads/2017/12/logo@3x-1.png" alt="service provider view" style="width: 250px;"/>
 </p>
 Our goal is to provide refugees and with the tools they need to establish identity, access educational and job training opportunities, secure medical care, and reunite with family members - tools that are critical for successful resettlements, but are very difficult to accomplish today.
-
 ## Education & Job Training
 With Harbor, the goal is to get short-term employment and education opportunities in front of refugees within days of arrival. Each completed class or training session is added as an attestation to their digital identity. Existing barriers to employment can be eased when our users are able to provide a biometrically secure, verifiable job history.
 
