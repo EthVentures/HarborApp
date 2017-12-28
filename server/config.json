@@ -13,6 +13,7 @@
   "biometric": {
     "API_URL": "http://localhost:5000/api/v1.0/",
     "SAVE_IMAGE_ROUTE": "image/save",
-    "IDENTIFICATION_ROUTE": "identification"
+    "IDENTIFICATION_ROUTE": "identification",
+    "DELETE_IMAGE_ROUTE": "image/delete"
   }
 }

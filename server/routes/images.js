@@ -10,6 +10,17 @@ var tokenMiddleware = require('../middleware/token');
 var rp = require('request-promise');
 var mongoose = require('mongoose');
 
+
+router.get('/family/:id', function(req, res){
+  Image.find({ publicKey: req.params.id }, function handleQuery(error, docs) {
+    if (docs == null) {
+      res.json({ success:false });
+    } else {
+      res.json({ success:true, members:docs });
+    }
+  });
+});
+
 router.post('/addBiometrics', function(req, res){
   console.log("Add Payload Image");
 
@@ -44,7 +55,7 @@ router.post('/deleteBiometrics', function(req, res){
   var image = req.body;
   var options = {
     method: 'POST',
-    uri: CONFIG.biometric.API_URL + CONFIG.biometric.SAVE_IMAGE_ROUTE,
+    uri: CONFIG.biometric.API_URL + CONFIG.biometric.DELETE_IMAGE_ROUTE,
     body: {
       'filename':image['_id'] + '.jpeg'
     }, json: true
