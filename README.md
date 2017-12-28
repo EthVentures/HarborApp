@@ -13,6 +13,7 @@ The first step to using our app is the establishment of self-sovereign identific
 <img src="https://projectsafeharbor.com/wp-content/uploads/2017/12/logo@3x-1.png" alt="service provider view" style="width: 250px;"/>
 </p>
 Our goal is to provide refugees and with the tools they need to establish identity, access educational and job training opportunities, secure medical care, and reunite with family members - tools that are critical for successful resettlements, but are very difficult to accomplish today.
+
 ## Education & Job Training
 With Harbor, the goal is to get short-term employment and education opportunities in front of refugees within days of arrival. Each completed class or training session is added as an attestation to their digital identity. Existing barriers to employment can be eased when our users are able to provide a biometrically secure, verifiable job history.
 
