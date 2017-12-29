@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>HarborApp</name>
+    <name>Harbor</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content original-src="index.html" src="http://192.168.50.52:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -85,7 +85,6 @@
     <allow-navigation href="http://10.0.0.17:8100" />
     <allow-navigation href="http://169.254.141.120:8100" />
     <allow-navigation href="http://192.168.50.52:8100" />
-    <engine name="ios" spec="^4.4.0" />
     <plugin name="cordova-plugin-camera" spec="^3.0.0" />
     <plugin name="cordova-plugin-device" spec="^1.1.4" />
     <plugin name="cordova-plugin-file" spec="^5.0.0" />
@@ -100,4 +99,5 @@
     <plugin name="cordova-sqlite-storage" spec="^2.1.4" />
     <plugin name="info.protonet.imageresizer" spec="^0.1.1" />
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
+    <engine name="ios" spec="~4.4.0" />
 </widget>
