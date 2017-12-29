@@ -3,7 +3,7 @@
 </p>
 
 
-# Welcome to Project Safe Harbor
+
 [Project Safe Harbor](https://projectsafeharbor.com) is an open source platform that leverages blockchain and artificial intelligence to enable societies and communities to provide basic resources, safety, and security to the more than 65 million asylum seekers around the world.
 
 This project launched in December 2017 as a submission to the [World Virtual Govhack](http://hackathon.govtechprize.ae/) hackathon. We focus on the top challenges asylum seekers face - **establishing identity**, **accessing educational and job training opportunities**, **securing medical care**, and **reuniting with family members**.
