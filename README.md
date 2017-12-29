@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://github.com/EthVentures/HarborApp/raw/master/src/assets/safeharborlogo.png" alt="service provider view" style="width: 250px;"/>
+<img src="https://github.com/EthVentures/HarborApp/raw/master/src/assets/safeharborlogo.png" alt="service provider view"/>
 </p>
 
 
