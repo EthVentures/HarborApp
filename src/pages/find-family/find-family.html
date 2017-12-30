@@ -24,6 +24,11 @@
           <b> Face</b> search uses your face captured on this device along with additional infomation to find possible family members. Project Safe Harbor uses advanced biometric technology and machine learning to bring families back to together.
         </p>
         <ion-item>
+          <ion-thumbnail item-start *ngIf="haveImg">
+            <img  [src]="tempimage">
+          </ion-thumbnail>
+        </ion-item>
+        <ion-item>
           <ion-label stacked>Family member's name? (Optional)</ion-label>
           <ion-input type="text"></ion-input>
         </ion-item>
@@ -51,6 +56,10 @@
             <ion-row *ngIf="haveImg">
               <ion-col>
                 <button ion-button full color="redside" (click)="retake()">Remove Photo</button>
+                <p>
+                  Please ensure photo taken is upright. Use the rotation button below to rotate it to the appropriate position.
+                </p>
+                <button ion-button full color="mainbar" (click)="gorotate()">Rotate</button>
               </ion-col>
             </ion-row>
             <ion-row>

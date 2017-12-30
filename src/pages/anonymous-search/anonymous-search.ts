@@ -159,7 +159,12 @@ export class AnonymousSearchPage {
    actionSheet.present();
   }
 
-
+  gorotate() {
+    var self = this;
+    this.rotateBase64Image(this.tempimage,90,function(data) {
+      self.tempimage = data;
+    })
+  }
 
   find() {
     if (this.haveImg) {

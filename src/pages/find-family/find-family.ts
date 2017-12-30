@@ -134,7 +134,8 @@ export class FindFamilyPage {
         this.tempimage = 'data:image/jpeg;base64,' + reimg;
         var current_scope = this;
         this.rotateBase64Image(this.tempimage,90,function(rotate_data) {
-          current_scope.tempimage = rotate_data.split(',')[1];
+          //current_scope.tempimage = rotate_data.split(',')[1];
+          current_scope.tempimage = rotate_data;
           current_scope.haveImg = true;
           toast.dismiss();
         })
@@ -142,6 +143,13 @@ export class FindFamilyPage {
     }, (err) => {
 
     });
+  }
+
+  gorotate() {
+    var self = this;
+    this.rotateBase64Image(this.tempimage,90,function(data) {
+      self.tempimage = data;
+    })
   }
 
   findcamera() {
@@ -188,7 +196,7 @@ export class FindFamilyPage {
     if (this.haveImg) {
       this.isSpinner = true;
       console.log("Finding Family");
-      var payload = { 'query': this.tempimage };
+      var payload = { 'query': this.tempimage.split(',')[1] };
       this.authServiceProvider.imageIdentification(payload).subscribe(results => {
         console.log(results);
         this.predictions = results;
@@ -219,7 +227,7 @@ export class FindFamilyPage {
     var url = account['avatar'].uri;
     console.log(account['avatar'].uri);
     this.getBase64ImageFromURL(url).subscribe(data => {
-      this.tempimage = data;
+      this.tempimage = 'data:image/jpeg;base64,' + data;
       this.haveImg = true;
     });
   }

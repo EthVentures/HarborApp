@@ -12,7 +12,7 @@
 <ion-content style="background-color: #eee;">
 
   <ion-item>
-    <div style="display:table-cell; vertical-align:middle; text-align:center">
+    <div *ngIf="hasImg" style="display:table-cell; vertical-align:middle; text-align:center">
       <img [src]="famImage" style="border-radius: 25px;" height="50%">
     </div>
   </ion-item>
@@ -66,7 +66,12 @@
   </ion-item>
 
   <div padding style="background-color:white;">
-    <button ion-button full color="mainbar" (click)="cam()">Camera</button>
+    <button ion-button full color="mainbar" (click)="cam()">Photo</button>
+    <p>
+      Please ensure photo taken is upright. Use the rotation button below to rotate it to the appropriate position.
+    </p>
+    <button ion-button full color="mainbar" (click)="gorotate()">Rotate</button>
+    <br>
     <button ion-button full color="dark" (click)="add()">Add</button>
     <!--<button ion-button full color="mainbar" (click)="saveImageTest()">Test Save</button>
     <button ion-button full color="mainbar" (click)="deleteImageTest()">Test Delete</button>-->

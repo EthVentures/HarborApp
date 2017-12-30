@@ -22,6 +22,11 @@
         <b>Anonymous Face</b> search uses your face captured on this device along with additional infomation to find possible family members. Project Safe Harbor uses advanced biometric technology and machine learning to bring families back to together. Anonymous search <b>removes/deletes</b> all infomation related to search afterward. If you would like to located family member and begin transfer application please sign in using your uPort account.
       </p>
       <ion-item>
+        <ion-thumbnail item-start *ngIf="haveImg">
+          <img  [src]="tempimage">
+        </ion-thumbnail>
+      </ion-item>
+      <ion-item>
         <ion-label stacked>Family member's name? (Optional)</ion-label>
         <ion-input type="text"></ion-input>
       </ion-item>
@@ -36,6 +41,10 @@
       <div padding style="background-color:white;">
         <button ion-button full color="mainbar" (click)="anonymouscamera()" *ngIf="!haveImg">Take A Picture</button>
         <button ion-button full color="redside" (click)="retake()" *ngIf="haveImg">Retake Image</button>
+        <p *ngIf="haveImg">
+          Please ensure photo taken is upright. Use the rotation button below to rotate it to the appropriate position.
+        </p>
+        <button ion-button full color="mainbar" (click)="gorotate()" *ngIf="haveImg">Rotate</button>
         <br>
         <button ion-button full color="mainbar" (click)="find()" *ngIf="haveImg">Search<ion-spinner name="bubbles" *ngIf="isSpinner"></ion-spinner></button>
       </div>

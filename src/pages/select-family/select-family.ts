@@ -19,6 +19,8 @@ export class SelectFamilyPage {
   temp:any;
   relationship:any;
   missing:any;
+  hasImg = false;
+
   constructor(public actionSheetCtrl: ActionSheetController,public toastCtrl: ToastController,public authServiceProvider:AuthServiceProvider,private camera: Camera,public viewController:ViewController,public navCtrl: NavController, public navParams: NavParams) {
     this.famImage = '';
     this.firstName = '';
@@ -138,6 +140,13 @@ export class SelectFamilyPage {
     }, (err) => {
 
     });
+  }
+
+  gorotate() {
+    var self = this;
+    this.rotateBase64Image(this.famImage,90,function(data) {
+      self.famImage = data;
+    })
   }
 
   cam() {
