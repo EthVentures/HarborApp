@@ -41,7 +41,7 @@ Families around the world are torn apart by economic, political, or natural disa
 1. Start the [HarborBiometrics](https://github.com/EthVentures/HarborBiometrics) docker image.
 2. Spin up an instance of MongoDB to store user information
 ```bash
-mongod —dbpath .
+mongod --dbpath .
 ```
 3. Start the NodeJS Server middleware by navigating to HarborApp/server
 ```bash
