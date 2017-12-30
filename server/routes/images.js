@@ -96,22 +96,36 @@ router.post('/findFamily', function(req, res){
       var temp = {};
       for (var i = 0; i < predictions.length; i++) {
         var id = predictions[i].filename.split('.')[0];
-        if (mongoose.Types.ObjectId.isValid(id)) {
-          ids.push(id);
-          temp[id] = predictions[i];
+        var result = predictions[i].result;
+        if (result > 0.80) {
+          console.log(result);
+          if (mongoose.Types.ObjectId.isValid(id)) {
+            ids.push(id);
+            temp[id] = predictions[i];
+          }
         }
       }
       Image.find({ '_id': { $in: ids } }, function(err, images){
-        //console.log(JSON.stringify(images));
-        //console.log(JSON.stringify(temp));
-        //console.log(ids);
+        var im = {};
         var results = [];
+
         for (var i = 0; i < images.length; i++) {
           var nobj = JSON.parse(JSON.stringify(images[i]));
-          nobj['details'] = temp[nobj['_id']];
-          nobj['hasImg'] = false;
-          results.push(nobj);
+          im[nobj['_id']] = nobj
         }
+
+        for (var i = 0; i < predictions.length; i++) {
+          var id = predictions[i].filename.split('.')[0];
+          if (mongoose.Types.ObjectId.isValid(id)) {
+            var nobj = im[id];
+            nobj['details'] = predictions[i];;
+            nobj['hasImg'] = false;
+            results.push(nobj);
+          }
+        }
+
+        console.log("\n");
+        console.log(JSON.stringify(results));
         res.json(results);
       });
   }).catch(function (err) {
