@@ -98,9 +98,11 @@ router.post('/findFamily', function(req, res){
         var id = predictions[i].filename.split('.')[0];
         var result = predictions[i].result;
         if (result > 0.80) {
-          console.log(result);
           if (mongoose.Types.ObjectId.isValid(id)) {
             ids.push(id);
+            console.log(id);
+            console.log(result);
+            console.log(i);
             temp[id] = predictions[i];
           }
         }
@@ -111,16 +113,19 @@ router.post('/findFamily', function(req, res){
 
         for (var i = 0; i < images.length; i++) {
           var nobj = JSON.parse(JSON.stringify(images[i]));
-          im[nobj['_id']] = nobj
+          im[nobj['_id']] = nobj;
         }
 
         for (var i = 0; i < predictions.length; i++) {
           var id = predictions[i].filename.split('.')[0];
           if (mongoose.Types.ObjectId.isValid(id)) {
-            var nobj = im[id];
-            nobj['details'] = predictions[i];;
-            nobj['hasImg'] = false;
-            results.push(nobj);
+            if (im[id] != null) {
+              var nobj = im[id];
+              console.log(JSON.stringify(predictions[i]));
+              nobj['details'] = predictions[i];
+              nobj['hasImg'] = false;
+              results.push(nobj);
+            }
           }
         }
 
