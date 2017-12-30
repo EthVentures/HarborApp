@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ActionSheetController } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
@@ -21,7 +21,7 @@ export class AnonymousSearchPage {
   hasSearch = false;
   isSpinner:boolean;
 
-  constructor(public toastCtrl:ToastController,public _DomSanitizer:DomSanitizer,public authServiceProvider:AuthServiceProvider,private camera: Camera,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public actionSheetCtrl: ActionSheetController,public toastCtrl:ToastController,public _DomSanitizer:DomSanitizer,public authServiceProvider:AuthServiceProvider,private camera: Camera,public navCtrl: NavController, public navParams: NavParams) {
     this.tempimage = '';
   }
 
@@ -102,13 +102,14 @@ export class AnonymousSearchPage {
     this.navCtrl.push(ListJobsPage);
   }
 
-  anonymouscamera() {
+  docamera(type) {
     console.log("Find Family using Camera");
     const options: CameraOptions = {
       quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE
+      mediaType: this.camera.MediaType.PICTURE,
+      sourceType:type
     }
     let toast = this.toastCtrl.create({
       message: 'Please wait, processing picture for biometrics...',
@@ -131,6 +132,34 @@ export class AnonymousSearchPage {
 
     });
   }
+
+  anonymouscamera() {
+    let actionSheet = this.actionSheetCtrl.create({
+     title: 'Please select your method',
+     buttons: [
+       {
+         text: 'Camera',
+         handler: () => {
+           this.docamera(1);
+         }
+       },
+       {
+         text: 'Gallery',
+         handler: () => {
+           this.docamera(0);
+         }
+       },
+       {
+         text: 'Cancel',
+         role: 'cancel',
+         handler: () => { }
+       }
+     ]
+   });
+   actionSheet.present();
+  }
+
+
 
   find() {
     if (this.haveImg) {

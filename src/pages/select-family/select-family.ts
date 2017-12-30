@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ViewController,ActionSheetController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { ToastController } from 'ionic-angular';
@@ -19,7 +19,7 @@ export class SelectFamilyPage {
   temp:any;
   relationship:any;
   missing:any;
-  constructor(public toastCtrl: ToastController,public authServiceProvider:AuthServiceProvider,private camera: Camera,public viewController:ViewController,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public actionSheetCtrl: ActionSheetController,public toastCtrl: ToastController,public authServiceProvider:AuthServiceProvider,private camera: Camera,public viewController:ViewController,public navCtrl: NavController, public navParams: NavParams) {
     this.famImage = '';
     this.firstName = '';
     this.lastName = '';
@@ -105,12 +105,13 @@ export class SelectFamilyPage {
     };
   }
 
-  cam() {
+  docamera(type) {
     const options: CameraOptions = {
       quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE
+      mediaType: this.camera.MediaType.PICTURE,
+      sourceType:type
     }
     this.camera.getPicture(options).then((imageData) => {
       let toast = this.toastCtrl.create({
@@ -137,6 +138,32 @@ export class SelectFamilyPage {
     }, (err) => {
 
     });
+  }
+
+  cam() {
+    let actionSheet = this.actionSheetCtrl.create({
+     title: 'Please select your method',
+     buttons: [
+       {
+         text: 'Camera',
+         handler: () => {
+           this.docamera(1);
+         }
+       },
+       {
+         text: 'Gallery',
+         handler: () => {
+           this.docamera(0);
+         }
+       },
+       {
+         text: 'Cancel',
+         role: 'cancel',
+         handler: () => { }
+       }
+     ]
+   });
+   actionSheet.present();
   }
 
   add() {

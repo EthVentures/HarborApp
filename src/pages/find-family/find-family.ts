@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { ToastController } from 'ionic-angular';
 
 @Component({
   selector: 'page-find-family',
@@ -19,7 +20,7 @@ export class FindFamilyPage {
   cardTitle = 'FIND FAMILY';
   isSpinner:boolean;
 
-  constructor(public camera:Camera,public navCtrl: NavController, public navParams: NavParams,public authServiceProvider:AuthServiceProvider) {
+  constructor(public toastCtrl:ToastController,public actionSheetCtrl: ActionSheetController,public camera:Camera,public navCtrl: NavController, public navParams: NavParams,public authServiceProvider:AuthServiceProvider) {
     this.tempimage = '';
     this.predictions = [];
     this.isSpinner = false;
@@ -110,15 +111,22 @@ export class FindFamilyPage {
     this.predictions = [];
   }
 
-  findcamera() {
+  docamera(type) {
     console.log("Using Camera");
     const options: CameraOptions = {
       quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE
+      mediaType: this.camera.MediaType.PICTURE,
+      sourceType:type
     }
     this.camera.getPicture(options).then((imageData) => {
+      let toast = this.toastCtrl.create({
+        message: 'Please wait, processing picture for biometrics...',
+        duration: 3000,
+        position:'middle'
+      });
+      toast.present();
       var data = { 'image': imageData, 'format': 'jpeg' }
       this.authServiceProvider.imageResize(data).subscribe(res_resize => {
         console.log("Image resized/rotating...");
@@ -128,11 +136,38 @@ export class FindFamilyPage {
         this.rotateBase64Image(this.tempimage,90,function(rotate_data) {
           current_scope.tempimage = rotate_data.split(',')[1];
           current_scope.haveImg = true;
+          toast.dismiss();
         })
       });
     }, (err) => {
 
     });
+  }
+
+  findcamera() {
+    let actionSheet = this.actionSheetCtrl.create({
+     title: 'Please select your method',
+     buttons: [
+       {
+         text: 'Camera',
+         handler: () => {
+           this.docamera(1);
+         }
+       },
+       {
+         text: 'Gallery',
+         handler: () => {
+           this.docamera(0);
+         }
+       },
+       {
+         text: 'Cancel',
+         role: 'cancel',
+         handler: () => { }
+       }
+     ]
+   });
+   actionSheet.present();
   }
 
   rightAction() {
@@ -155,12 +190,13 @@ export class FindFamilyPage {
       console.log("Finding Family");
       var payload = { 'query': this.tempimage };
       this.authServiceProvider.imageIdentification(payload).subscribe(results => {
-        console.log(JSON.stringify(results));
+        console.log(results);
         this.predictions = results;
         this.hasSearch = true;
         this.rightItemIcon = 'refresh-circle';
         this.cardTitle = 'RESULTS';
         this.isSpinner = false;
+
         for (var i = 0; i < this.predictions.length; i++) {
           this.getImage(i,this.predictions[i]);
         }
