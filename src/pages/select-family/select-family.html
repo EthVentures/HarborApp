@@ -11,13 +11,16 @@
 
 <ion-content style="background-color: #eee;">
 
-  <ion-item>
-    <div *ngIf="hasImg" style="display:table-cell; vertical-align:middle; text-align:center">
+  <!--<ion-item>
+    <div style="display:table-cell; vertical-align:middle; text-align:center">
       <img [src]="famImage" style="border-radius: 25px;" height="50%">
     </div>
-  </ion-item>
+  </ion-item>-->
 
   <ion-item>
+    <ion-thumbnail item-start *ngIf="hasImg">
+      <img [src]="famImage">
+    </ion-thumbnail>
     <ion-label stacked>First Name</ion-label>
     <ion-input type="text" [(ngModel)]="firstName"></ion-input>
   </ion-item>
@@ -67,10 +70,10 @@
 
   <div padding style="background-color:white;">
     <button ion-button full color="mainbar" (click)="cam()">Photo</button>
-    <p>
+    <p *ngIf="hasImg">
       Please ensure photo taken is upright. Use the rotation button below to rotate it to the appropriate position.
     </p>
-    <button ion-button full color="mainbar" (click)="gorotate()">Rotate</button>
+    <button ion-button full color="mainbar" (click)="gorotate()" *ngIf="hasImg">Rotate</button>
     <br>
     <button ion-button full color="dark" (click)="add()">Add</button>
     <!--<button ion-button full color="mainbar" (click)="saveImageTest()">Test Save</button>

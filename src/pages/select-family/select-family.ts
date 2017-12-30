@@ -128,6 +128,7 @@ export class SelectFamilyPage {
         var self = this;
         this.rotateBase64Image(this.famImage,90,function(data) {
           self.famImage = data;
+          self.hasImg = true;
           toast.dismiss();
           /*var ageq = {'query':datare.response[0].image};
           self.authServiceProvider.imageAge(ageq).subscribe(data_age => {
