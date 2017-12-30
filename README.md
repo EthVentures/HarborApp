@@ -28,6 +28,7 @@ Families around the world are torn apart by economic, political, or natural disa
 
 ## Video
 
+[![Video Submission](https://img.youtube.com/vi/Hzbv97m4rd4/0.jpg)](https://youtu.be/Hzbv97m4rd4)
 
 ### Prerequisites
 * [Node](https://nodejs.org/)
